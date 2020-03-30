@@ -1,0 +1,15 @@
+{
+  "name": "sad-lead-form-template",
+  "version": "1.0.0",
+  "description": "sad-lead-form-template",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.0",
+    "parcel-bundler": "^1.6.1",
+    "sass": "^1.26.3"
+  }
+}
