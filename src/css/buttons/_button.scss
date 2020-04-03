@@ -1,0 +1,134 @@
+@import 'button-functions';
+$button-padding: .5rem 2rem;
+$button-color-alt: #030315;
+$button-border-radius: .25rem;
+$button-transition-duration: .2s;
+
+.sad-lead-form-button {
+  @include button-block($display: inline-flex);
+
+  text-transform: uppercase;
+
+  border-radius: 0!important;
+
+  &--default {
+    @include button-style-modifier();
+  }
+
+  &--primary {
+    @include button-style-modifier(
+    $background-color: #5a46ff,
+    $background-color-hover: #4333db
+    );
+  }
+
+  &--outline-primary {
+    @include button-style-modifier(
+    $color: #fff,
+    $color-disabled: #999,
+    $border-width: .125rem,
+    $border-color: #5a46ff,
+    $background-color: transparent,
+    $background-color-hover: #5a46ff,
+    $border-color-disabled: #9e90ff,
+    );
+  }
+
+  &--outline-success {
+    @include button-style-modifier(
+    $color: #fff,
+    $color-disabled: #999,
+    $border-width: .125rem,
+    $border-color: #76d319,
+    $background-color: transparent,
+    $background-color-hover: #76d319,
+    $border-color-disabled: #bef171
+    );
+  }
+
+  &--outline-danger {
+    @include button-style-modifier(
+    $color: #fff,
+    $color-disabled: #999,
+    $border-width: .125rem,
+    $border-color: #fc3559,
+    $background-color: transparent,
+    $background-color-hover: #fc3559,
+    $border-color-disabled: #feb6ae
+    );
+  }
+
+  &--outline-warning {
+    @include button-style-modifier(
+    $color: #fff,
+    $color-disabled: #999,
+    $border-width: .125rem,
+    $border-color: #fc840c,
+    $background-color: transparent,
+    $background-color-hover: #fc840c,
+    $border-color-disabled: #fedc9d
+    );
+  }
+
+  &--outline-info {
+    @include button-style-modifier(
+    $color: #fff,
+    $color-disabled: #999,
+    $border-width: .125rem,
+    $border-color: #00cbf4,
+    $background-color: transparent,
+    $background-color-hover: #00cbf4,
+    $border-color-disabled: #98fdf7
+    );
+  }
+
+  &--outline-light {
+    @include button-style-modifier(
+    $color: #fff,
+    $color-disabled: #999,
+    $border-width: .125rem,
+    $border-color: #c4c5ca,
+    $background-color: transparent,
+    $background-color-hover: #c4c5ca,
+    $border-color-disabled: #efeff1,
+    );
+  }
+
+  &--outline-dark {
+    @include button-style-modifier(
+    $color: #fff,
+    $color-disabled: #999,
+    $border-width: .125rem,
+    $border-color: #191922,
+    $background-color: transparent,
+    $background-color-hover: #191922,
+    $border-color-disabled: #c4c5ca
+    );
+  }
+
+  &--success {
+    @include button-style-modifier($background-color: #76d319);
+  }
+
+  &--danger {
+    @include button-style-modifier($background-color: #fc3559);
+  }
+
+  &--warning {
+    @include button-style-modifier($background-color: #fc840c);
+  }
+
+  &--info {
+    @include button-style-modifier($background-color: #00cbf4);
+  }
+
+  &--light {
+    @include button-style-modifier($background-color: #c4c5ca);
+  }
+
+  &--dark {
+    @include button-style-modifier($background-color: #191922);
+
+    color: white;
+  }
+}

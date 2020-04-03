@@ -1,0 +1,37 @@
+.sad--hidden {
+  display: none;
+}
+
+.sad-lead-form-error {
+  display: none;
+
+  color: #dc3545 !important;
+
+  font-size: small;
+  font-style: italic;
+}
+
+.sad--invalid {
+  @at-root
+  #{&},
+  #{&} input,
+  #{&} select,
+  #{&} .sad-lead-form-error {
+    border-color: #dc3545 !important;
+
+    .sad-lead-form-control__label:before {
+      border-color: #dc3545 !important;
+    }
+  }
+
+  @at-root #{&} input[type='checkbox'] {
+    outline: 2px solid #dc3545;
+  }
+
+  @at-root
+  #{&} .sad-lead-form-error {
+    display: inherit;
+  }
+}
+
+

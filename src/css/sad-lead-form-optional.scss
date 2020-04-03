@@ -1,0 +1,146 @@
+// --------------------
+// Normalizer
+// --------------------
+@import '../../node_modules/normalize.css/normalize.css';
+
+// --------------------
+// Media queries
+// --------------------
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+$viewport-xs-from: 0;
+$viewport-xs-to: '575.98px';
+
+// Small devices (landscape phones, 576px and up)
+$viewport-sm-from: '576px';
+$viewport-sm-to: '767.98px';
+
+// Medium devices (tablets, 768px and up)
+$viewport-md-from: '768px';
+$viewport-md-to: '991.98px';
+
+// Large devices (desktops, 992px and up)
+$viewport-lg-from: '992px';
+$viewport-lg-to: '1199.98px';
+
+// Extra large devices (large desktops, 1200px and up)
+$viewport-xl-from: '1200px';
+$viewport-xl-to: '999999px';
+
+// --------------------
+// SAD Form
+// --------------------
+.sad-lead-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+
+  max-width: 960px;
+  margin: auto;
+
+  background-color: #f9f9f9;
+  box-shadow: 8px 8px 34px 0 rgba(0, 0, 0, .376);
+
+  @at-root #{&}__column {
+    padding: 21px;
+
+    @at-root #{&}--full {
+      width: calc(100% - 42px);
+    }
+
+    @at-root #{&}--half {
+      width: calc(50% - 42px);
+    }
+
+    @at-root
+    #{&}--half + #{&}--full,
+    #{&}--full + #{&}--half {
+      padding-top: 0;
+    }
+  }
+
+  @at-root #{&}__submit-container {
+    width: 80%;
+    margin-left: auto;
+  }
+
+  @at-root #{&}__submit-button {
+    justify-content: center;
+
+    width: 100%;
+  }
+
+  .label {
+    display: block;
+
+    margin-bottom: .3rem;
+
+    font-size: .85rem;
+  }
+
+  label {
+    cursor: pointer;
+    user-select: none;
+  }
+}
+
+// --------------------
+// Width
+// --------------------
+.sad-lead-form-width {
+  @at-root #{&}-382pc {
+    width: 38.2%;
+  }
+
+  @at-root #{&}-flex-grow-1 {
+    flex-grow: 1;
+  }
+}
+
+.sad-pt-8 {
+  padding-top: 8px;
+}
+
+// --------------------
+// Flex utils
+// --------------------
+.sad-lead-form-flex {
+  @at-root #{&}__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  @at-root #{&}__element + #{&}__element {
+    @media screen and (min-width: #{$viewport-lg-from}) {
+      padding-left: 21px;
+    }
+  }
+}
+
+// --------------------
+// Text utils
+// --------------------
+.sad-lead-form-text-center {
+  text-align: center;
+}
+
+.sad-lead-form-text-right {
+  text-align: right;
+}
+
+.sad-lead-form-text-inline {
+  display: inline !important;
+}
+
+// --------------------
+// Form
+// --------------------
+@import 'form/form';
+
+// --------------------
+// Button
+// --------------------
+@import 'buttons/button';

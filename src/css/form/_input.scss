@@ -1,0 +1,49 @@
+.#{ $form__prefix }input {
+  box-sizing: border-box;
+  width: 100%;
+  //margin: 0 0 $form__margin;
+  margin: .3rem 0 .3rem;
+  padding: $form__padding;
+
+  resize: vertical;
+  transition: border-color $form__duration $form__timing;
+
+  color: $form__color;
+  border: 1px solid $form__border;
+  border-radius: $form__radius;
+  outline: none;
+  background: $form__background;
+  box-shadow: $form__shadow;
+
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+
+  appearance: none;
+
+  &[disabled] {
+    cursor: not-allowed;
+
+    color: lighten($form__color, 5%);
+    border-color: lighten($form__border, 5%);
+    background-color: darken($form__background, 5%);
+    box-shadow: none;
+  }
+
+  &:focus {
+    border-color: $form__active;
+  }
+
+  &::placeholder {
+    opacity: 1;
+    color: $form__placeholder;
+  }
+
+  &:-ms-input-placeholder {
+    color: $form__placeholder;
+  }
+
+  &::-ms-input-placeholder {
+    color: $form__placeholder;
+  }
+}

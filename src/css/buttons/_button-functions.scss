@@ -1,0 +1,195 @@
+$button-function-factor: -20% !default;
+$button-background-color-lightness-threshold: 70% !default;
+$button-font-family: null !default;
+$button-background-color: #e0e0e0 !default;
+$button-background-color-hover: auto !default;
+$button-border-radius: 3px !default;
+$button-font-size: 16px !default;
+$button-line-height: (24 / 16) !default;
+$button-color: #fff !default;
+$button-color-alt: #333 !default;
+$button-padding: 10px 20px !default;
+$button-border-width: 0 !default;
+$button-transition-duration: .4s !default;
+$button-transition-property: background-color, color, border-color !default;
+$button-include-disabled-styles: true !default;
+$button-opacity-disabled: .7 !default;
+$button-include-focus-styles: true !default;
+$button-outline-width-focus: 2px !default;
+$button-outline-style-focus: dotted !default;
+$button-outline-color-focus: auto !default;
+$button-outline-offset-focus: 1px !default;
+
+@mixin button-block(
+  $transition-duration: $button-transition-duration,
+  $transition-property: $button-transition-property,
+  $border-width: $button-border-width,
+  $cursor: pointer,
+  $font-family: $button-font-family,
+  $font-size: $button-font-size,
+  $line-height: $button-line-height,
+  $padding: $button-padding,
+  $text-align: center,
+  $vertical-align: middle,
+  $display: inline-block,
+  $include-disabled-styles: $button-include-disabled-styles
+) {
+  display: $display;
+
+  padding: $padding;
+
+  user-select: none;
+  transition-duration: $transition-duration;
+  text-align: $text-align;
+  vertical-align: $vertical-align;
+
+  border: $border-width solid transparent;
+
+  font-family: $font-family;
+  font-size: $font-size;
+  line-height: $line-height;
+
+  &:not(:disabled):not([aria-disabled='true']) {
+    cursor: $cursor;
+  }
+
+  @if not($transition-duration == null) {
+    transition-property: $transition-property;
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  @if $include-disabled-styles {
+    &:disabled,
+    &[aria-disabled='true'] {
+      box-shadow: none;
+    }
+  }
+}
+
+@mixin button-style-modifier(
+  $background-color: $button-background-color,
+  $background-color-hover: $button-background-color-hover,
+  $color: auto,
+  $color-hover: auto,
+  $border-width: $button-border-width,
+  $border-color: undefined,
+  $border-color-hover: undefined,
+  $border-radius: $button-border-radius,
+  $background-color-lightness-threshold: $button-background-color-lightness-threshold,
+  $opacity-disabled: $button-opacity-disabled,
+  $include-disabled-styles: $button-include-disabled-styles,
+  $background-color-disabled: undefined,
+  $border-color-disabled: undefined,
+  $color-disabled: undefined,
+  $include-focus-styles: $button-include-focus-styles,
+  $outline-width-focus: $button-outline-width-focus,
+  $outline-style-focus: $button-outline-style-focus,
+  $outline-color-focus: $button-outline-color-focus,
+  $outline-offset-focus: $button-outline-offset-focus
+) {
+  $background-color-lightness: 0;
+  $background-color-hover-lightness: 0;
+
+  color: $color;
+  border-color: $border-color;
+  border-radius: $border-radius;
+  background-color: $background-color;
+  @if $background-color-hover == auto {
+    $background-color-hover: scale-color($background-color, $lightness: $button-function-factor);
+  }
+
+  @if ($border-color == auto) and not($background-color == null) {
+    $border-color: scale-color($background-color, $lightness: $button-function-factor);
+  }
+
+  @if ($border-color-hover == auto) and not($background-color-hover == null) {
+    $border-color-hover: scale-color($background-color-hover, $lightness: $button-function-factor);
+  }
+
+  @if $border-color == undefined {
+    $border-color: $background-color;
+  }
+
+  @if $border-color-hover == undefined {
+    $border-color-hover: $background-color-hover;
+  }
+
+  @if not($background-color == null) {
+    $background-color-lightness: lightness($background-color);
+  }
+
+  @if $background-color == transparent {
+    $background-color-lightness: $background-color-lightness-threshold + 1%;
+  }
+
+  @if not($background-color-hover == null) {
+    $background-color-hover-lightness: lightness($background-color-hover);
+  }
+
+  @if $color == auto {
+    $color: if(
+    $background-color-lightness > $background-color-lightness-threshold,
+    $button-color-alt,
+    $button-color
+    );
+  }
+
+  @if $color-hover == auto {
+    $color-hover: if(
+    $background-color-hover-lightness > $background-color-lightness-threshold,
+    $button-color-alt,
+    $button-color
+    );
+  }
+
+  @if not($border-width == $button-border-width) {
+    border-width: $border-width;
+  }
+
+  &:hover {
+    color: $color-hover;
+    border-color: $border-color-hover;
+    background-color: $background-color-hover;
+  }
+
+  @if $outline-color-focus == auto {
+    $outline-color-focus: if(
+    $background-color-lightness > $background-color-lightness-threshold,
+    $color,
+    $background-color
+    );
+  }
+
+  @if $include-focus-styles {
+    &:focus {
+      outline: $outline-width-focus $outline-style-focus $outline-color-focus;
+      outline-offset: $outline-offset-focus;
+    }
+  }
+
+  @if $background-color-disabled == undefined {
+    $background-color-disabled: $background-color;
+  }
+
+  @if $border-color-disabled == undefined {
+    $border-color-disabled: $background-color;
+  }
+
+  @if $color-disabled == undefined {
+    $color-disabled: $color;
+  }
+
+  @if $include-disabled-styles {
+    &:disabled,
+    &[aria-disabled='true'] {
+      opacity: $opacity-disabled;
+      color: $color-disabled;
+      border-color: $border-color-disabled;
+      background-color: $background-color-disabled;
+    }
+  }
+}
