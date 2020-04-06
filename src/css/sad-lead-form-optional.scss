@@ -51,6 +51,10 @@ $viewport-xl-to: '999999px';
 
     @at-root #{&}--half {
       width: calc(50% - 42px);
+
+      @media screen and (max-width: #{$viewport-md-from}) {
+        width: 100%;
+      }
     }
 
     @at-root
@@ -113,8 +117,14 @@ $viewport-xl-to: '999999px';
     align-items: stretch;
   }
 
+  @at-root #{&}__element {
+    @media screen and (max-width: #{$viewport-md-from}) {
+      width: 100%;
+    }
+  }
+
   @at-root #{&}__element + #{&}__element {
-    @media screen and (min-width: #{$viewport-lg-from}) {
+    @media screen and (min-width: #{$viewport-md-from}) {
       padding-left: 21px;
     }
   }

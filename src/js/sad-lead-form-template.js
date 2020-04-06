@@ -88,7 +88,7 @@ class SadLeadFormTemplate {
 
         <div class="sad-lead-form-control" id="js-sad-lead-form-field-media">
             <label class="sad-lead-form-label">
-                Je souhaite recevoir de la documentation par :
+                Je souhaite recevoir de la documentation par&nbsp;:
             </label>
 
             <div class="sad-lead-form-error">
