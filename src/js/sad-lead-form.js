@@ -35,6 +35,12 @@ class SadLeadFormModel {
     const formattedModel = {};
     Object.assign(formattedModel, this._model);
 
+    formattedModel.applicant.address.l2 = formattedModel.applicant.address.l2.toUpperCase();
+    formattedModel.applicant.address.l3 = formattedModel.applicant.address.l3.toUpperCase();
+    formattedModel.applicant.address.l4 = formattedModel.applicant.address.l4.toUpperCase();
+    formattedModel.applicant.address.zipcode = formattedModel.applicant.address.zipcode.toUpperCase();
+    formattedModel.applicant.address.city = formattedModel.applicant.address.city.toUpperCase();
+
     if (formattedModel.applicant.relation === 'himself') {
       formattedModel.beneficiary = {
         gender: formattedModel.applicant.gender,

@@ -115,17 +115,17 @@ class SadLeadFormTemplate {
             <label class="sad-lead-form-control__label" for="js-sad-lead-form-address-toggle">Par courrier</label>
         </div>
         <div class="sad-lead-form-control sad--hidden" data-sad-lead-form-conditional-display-target="applicant.address">
-            <input class="sad-lead-form-input sad--hidden" data-sad-lead-form-conditional-display-target="applicant.address" name="applicant.address.l2" placeholder="Appt / Esc / Etage" type="text" autocorrect="off">
-            <input class="sad-lead-form-input sad--hidden" data-sad-lead-form-conditional-display-target="applicant.address" name="applicant.address.l3" placeholder="Bâtiment/Résidence" type="text" autocorrect="off">
-            <input class="sad-lead-form-input sad--hidden" data-sad-lead-form-conditional-display-target="applicant.address" name="applicant.address.l4" placeholder="Adresse" type="text" autocorrect="off" autocomplete="address-line1">
+            <input class="sad-lead-form-input sad--hidden sad-uppercase" data-sad-lead-form-conditional-display-target="applicant.address" name="applicant.address.l2" placeholder="Appt / Esc / Etage" type="text" autocorrect="off">
+            <input class="sad-lead-form-input sad--hidden sad-uppercase" data-sad-lead-form-conditional-display-target="applicant.address" name="applicant.address.l3" placeholder="Bâtiment/Résidence" type="text" autocorrect="off">
+            <input class="sad-lead-form-input sad--hidden sad-uppercase" data-sad-lead-form-conditional-display-target="applicant.address" name="applicant.address.l4" placeholder="Adresse" type="text" autocorrect="off" autocomplete="address-line1">
 
             <div class="sad-lead-form-flex__container">
                 <div class="sad-lead-form-flex__element sad-lead-form-width-382pc">
-                    <input class="sad-lead-form-input sad--hidden" data-sad-lead-form-conditional-display-target="applicant.address" name="applicant.address.zipcode" placeholder="Code Postal" type="text" pattern="\\d*" novalidate autocorrect="off" autocomplete="postal-code">
+                    <input class="sad-lead-form-input sad--hidden sad-uppercase" data-sad-lead-form-conditional-display-target="applicant.address" name="applicant.address.zipcode" placeholder="Code Postal" type="text" pattern="\\d*" novalidate autocorrect="off" autocomplete="postal-code">
                 </div>
 
                 <div class="sad-lead-form-flex__element sad-lead-form-width-flex-grow-1">
-                    <input class="sad-lead-form-input sad--hidden" data-sad-lead-form-conditional-display-target="applicant.address" name="applicant.address.city" placeholder="Ville" type="text" autocorrect="off" autocomplete="address-level2">
+                    <input class="sad-lead-form-input sad--hidden sad-uppercase" data-sad-lead-form-conditional-display-target="applicant.address" name="applicant.address.city" placeholder="Ville" type="text" autocorrect="off" autocomplete="address-level2">
                 </div>
             </div>
         </div>
