@@ -241,7 +241,7 @@ class SadLeadFormModel {
   }
 
   _validatePhone() {
-    if (this._elements.toggle.phone.checked && this._model.applicant.phonenumber === '') {
+    if (this._elements.toggle.phone.checked && this._model.applicant.phoneNumber === '') {
       this._elements.containers.phone.classList.add('sad--invalid');
       this._elements.containers.phoneField.classList.add('sad--invalid');
       this._isValid = false;
@@ -280,7 +280,7 @@ class SadLeadFormModel {
         phone: document.getElementById('js-sad-lead-form-field-phone'),
         emailField: document.querySelector('[data-sad-lead-form-conditional-display-target="applicant.email"]'),
         addressField: document.querySelector('[data-sad-lead-form-conditional-display-target="applicant.address"]'),
-        phoneField: document.querySelector('[data-sad-lead-form-conditional-display-target="applicant.phonenumber"]'),
+        phoneField: document.querySelector('[data-sad-lead-form-conditional-display-target="applicant.phoneNumber"]'),
         submit: document.getElementById('js-sad-lead-form-field-submit'),
       },
     };

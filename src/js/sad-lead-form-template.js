@@ -131,22 +131,22 @@ class SadLeadFormTemplate {
         </div>
 
         <!-- ------------------
-         Phone : applicant.phonenumber
+         Phone : applicant.phoneNumber
         ------------------- -->
         <div class="sad-lead-form-control" id="js-sad-lead-form-field-phone">
-            <input class="sad-lead-form-control__input" id="js-sad-lead-form-phone-toggle" type="checkbox" data-sad-lead-form-conditional-display-toggle="applicant.phonenumber">
+            <input class="sad-lead-form-control__input" id="js-sad-lead-form-phone-toggle" type="checkbox" data-sad-lead-form-conditional-display-toggle="applicant.phoneNumber">
             <label class="sad-lead-form-control__label" for="js-sad-lead-form-phone-toggle">Être recontacter par téléphone</label>
         </div>
-        <div class="sad-lead-form-control sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phonenumber">
-            <input class="sad-lead-form-input sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phonenumber" name="applicant.phonenumber" placeholder="Saisissez votre numéro de téléphone " type="tel" autocorrect="off" autocomplete="tel">
+        <div class="sad-lead-form-control sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phoneNumber">
+            <input class="sad-lead-form-input sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phoneNumber" name="applicant.phoneNumber" placeholder="Saisissez votre numéro de téléphone " type="tel" autocorrect="off" autocomplete="tel">
         </div>
 
         <!-- ------------------
          Je suis disponible : additionalinformation
         ------------------- -->
-        <div class="sad-lead-form-control sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phonenumber">
+        <div class="sad-lead-form-control sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phoneNumber">
             <label class="sad-lead-form-label">Je suis disponible</label>
-            <select class="sad-lead-form-select" data-sad-lead-form-conditional-display-target="applicant.phonenumber" data-sad-lead-form-field-name-additionalinformation-as-array>
+            <select class="sad-lead-form-select" data-sad-lead-form-conditional-display-target="applicant.phoneNumber" data-sad-lead-form-field-name-additionalinformation-as-array>
                 <option selected value="">-</option>
                 <option value="Le matin">Le matin</option>
                 <option value="L’après-midi">L’après-midi</option>
