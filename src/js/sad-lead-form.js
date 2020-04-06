@@ -47,6 +47,8 @@ class SadLeadFormModel {
         lastname: formattedModel.applicant.lastname,
         firstname: formattedModel.applicant.firstname,
       };
+
+      formattedModel.beneficiary.address = formattedModel.applicant.address;
     }
 
     if (formattedModel.additionalinformation[0] !== '' && formattedModel.additionalinformation[1] !== '') {
