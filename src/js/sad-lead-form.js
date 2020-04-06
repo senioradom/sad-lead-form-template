@@ -36,6 +36,17 @@ class SadLeadFormModel {
     Object.assign(formattedModel, this._model);
 
     formattedModel.tags = ['Site Web Distribueur', 'No_vendor'];
+
+    formattedModel.requestedActions = [];
+    if (this._elements.toggle.email.checked || this._elements.toggle.address.checked) {
+      formattedModel.requestedActions.push('send_subscription');
+      formattedModel.requestedActions.push('send_brochures');
+    }
+
+    if (this._elements.toggle.phone.checked) {
+      formattedModel.requestedActions.push('wants_to_be_called');
+    }
+
     formattedModel.applicant.address.l2 = formattedModel.applicant.address.l2.toUpperCase();
     formattedModel.applicant.address.l3 = formattedModel.applicant.address.l3.toUpperCase();
     formattedModel.applicant.address.l4 = formattedModel.applicant.address.l4.toUpperCase();
