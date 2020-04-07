@@ -9,14 +9,23 @@
 
   #sad-lead-form {
     width: 61.8%;
+
+    @media screen and (max-width: 1280px) {
+      width: 100%;
+    }
   }
 
   #sad-lead-form-demo-result {
-    width: 38.2%;
+    width: calc(38.2% - 68px);
+    padding: 34px;
 
     white-space: pre;
 
     font-family: monospace;
     font-size: 13px;
+
+    @media screen and (max-width: 1280px) {
+      width: calc(100% - 68px);
+    }
   }
 }
