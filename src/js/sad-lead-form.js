@@ -62,7 +62,9 @@ class SadLeadFormModel {
         firstname: formattedModel.applicant.firstname,
       };
 
-      formattedModel.beneficiary.address = formattedModel.applicant.address;
+      if (formattedModel.applicant.hasOwnProperty('address')) {
+        formattedModel.beneficiary.address = formattedModel.applicant.address;
+      }
     }
 
     if (formattedModel.additionalinformation[0] !== '' && formattedModel.additionalinformation[1] !== '') {
