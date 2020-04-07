@@ -12,6 +12,25 @@ const callBackFunction = () => {
 
   console.log(theObj);
   console.log(theJSON);
+
+  const basicAuth = 'Basic basicAuthExample';
+  const postURL = 'https://example.com/api/3/leads';
+
+  const myHeaders = new Headers();
+  myHeaders.append('Authorization', basicAuth);
+  myHeaders.append('Content-Type', 'application/json');
+
+  const requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: theJSON,
+    redirect: 'follow',
+  };
+
+  fetch(postURL, requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.log('error', error));
 };
 
 new SadLeadFormApp({
