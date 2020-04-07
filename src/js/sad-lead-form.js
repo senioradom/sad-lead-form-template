@@ -88,6 +88,7 @@ class SadLeadFormModel {
     this._validateMeanOfCommunication();
 
     if (!this._isValid) {
+      this._elements.submit.disabled = true;
       this._elements.containers.submit.classList.add('sad--invalid');
     }
   }
