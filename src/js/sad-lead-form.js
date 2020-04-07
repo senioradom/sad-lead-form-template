@@ -309,9 +309,7 @@ class SadLeadFormModel {
       this._elements.containers.address.classList.add('sad--invalid');
       this._elements.containers.addressField.classList.add('sad--invalid');
       this._isValid = false;
-    }
-
-    if (
+    } else if (
       this._elements.toggle.address.checked &&
       !this._sadLeadFormValidator.validateFrenchZipCode(this._model.applicant.address.zipcode)
     ) {
