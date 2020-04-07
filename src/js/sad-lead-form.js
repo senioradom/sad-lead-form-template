@@ -1,15 +1,22 @@
 import SadLeadFormValidator from './sad-lead-form-validator';
+import SadLeadFormUtils from './sad-lead-form-utils';
 
 class SadLeadFormModel {
-  constructor(sadLeadFormUtils, callback) {
+  constructor(config) {
     this._initElements();
     this._model = {};
     this._submitted = false;
     this._isValid = false;
 
-    this._callback = callback;
+    this._distributorCode = config.distributorCode;
+    this._callback = config.callback;
 
-    this._sadLeadFormUtils = sadLeadFormUtils;
+    this._agencyCode = null;
+    if (!config.hasOwnProperty('agencyCode')) {
+      this._agencyCode = config.agencyCode;
+    }
+
+    this._sadLeadFormUtils = new SadLeadFormUtils();
     this._sadLeadFormValidator = new SadLeadFormValidator();
 
     this._initEvents();
@@ -36,6 +43,11 @@ class SadLeadFormModel {
 
   _getFormattedModel() {
     const formattedModel = JSON.parse(JSON.stringify(this._model));
+
+    formattedModel.distributor = this._distributorCode;
+    if (this._agency) {
+      formattedModel.agency = this._agencyCode;
+    }
 
     formattedModel.tags = ['Site Web Distribueur', 'No_vendor'];
 
@@ -65,6 +77,10 @@ class SadLeadFormModel {
         lastname: formattedModel.applicant.lastname,
         firstname: formattedModel.applicant.firstname,
       };
+
+      if (formattedModel.applicant.hasOwnProperty('email')) {
+        formattedModel.beneficiary.email = formattedModel.applicant.email;
+      }
 
       if (formattedModel.applicant.hasOwnProperty('address')) {
         formattedModel.beneficiary.address = formattedModel.applicant.address;
