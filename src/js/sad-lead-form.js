@@ -63,14 +63,23 @@ class SadLeadFormModel {
         countryCode: 33,
         nationalNumber: formattedModel.applicant.phoneNumber,
       };
+    } else {
+      delete formattedModel.applicant.phoneNumber;
     }
 
-    formattedModel.applicant.address.l2 = formattedModel.applicant.address.l2.toUpperCase();
-    formattedModel.applicant.address.l3 = formattedModel.applicant.address.l3.toUpperCase();
-    formattedModel.applicant.address.l4 = formattedModel.applicant.address.l4.toUpperCase();
-    formattedModel.applicant.address.zipcode = formattedModel.applicant.address.zipcode.toUpperCase();
-    formattedModel.applicant.address.city = formattedModel.applicant.address.city.toUpperCase();
+    if (this._elements.toggle.address.checked) {
+      formattedModel.applicant.address.l2 = formattedModel.applicant.address.l2.toUpperCase();
+      formattedModel.applicant.address.l3 = formattedModel.applicant.address.l3.toUpperCase();
+      formattedModel.applicant.address.l4 = formattedModel.applicant.address.l4.toUpperCase();
+      formattedModel.applicant.address.zipcode = formattedModel.applicant.address.zipcode.toUpperCase();
+      formattedModel.applicant.address.city = formattedModel.applicant.address.city.toUpperCase();
+    } else {
+      delete formattedModel.applicant.address;
+    }
 
+    if (!this._elements.toggle.email.checked) {
+      delete formattedModel.applicant.email;
+    }
     if (formattedModel.applicant.relation === 'himself') {
       formattedModel.beneficiary = {
         gender: formattedModel.applicant.gender,
@@ -98,7 +107,7 @@ class SadLeadFormModel {
     } else if (formattedModel.additionalInformation[1] !== '') {
       formattedModel.additionalInformation = `${formattedModel.additionalInformation[1]}`;
     } else {
-      formattedModel.additionalInformation = '';
+      delete formattedModel.additionalInformation;
     }
 
     return formattedModel;
