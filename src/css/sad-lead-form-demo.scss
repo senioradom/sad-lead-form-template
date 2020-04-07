@@ -1,0 +1,22 @@
+// --------------------
+// SAD Form demo
+// --------------------
+.sad-lead-form-demo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+
+  #sad-lead-form {
+    width: 61.8%;
+  }
+
+  #sad-lead-form-demo-result {
+    width: 38.2%;
+
+    white-space: pre;
+
+    font-family: monospace;
+    font-size: 13px;
+  }
+}
