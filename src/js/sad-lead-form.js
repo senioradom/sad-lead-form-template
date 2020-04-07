@@ -47,6 +47,10 @@ class SadLeadFormModel {
 
     if (this._elements.toggle.phone.checked) {
       formattedModel.requestedActions.push('wants_to_be_called');
+      formattedModel.applicant.phoneNumber = {
+        countryCode: 33,
+        nationalNumber: formattedModel.applicant.phoneNumber,
+      };
     }
 
     formattedModel.applicant.address.l2 = formattedModel.applicant.address.l2.toUpperCase();
@@ -64,6 +68,10 @@ class SadLeadFormModel {
 
       if (formattedModel.applicant.hasOwnProperty('address')) {
         formattedModel.beneficiary.address = formattedModel.applicant.address;
+      }
+
+      if (formattedModel.applicant.hasOwnProperty('phoneNumber')) {
+        formattedModel.beneficiary.phoneNumber = formattedModel.applicant.phoneNumber;
       }
     }
 
