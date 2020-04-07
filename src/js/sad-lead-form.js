@@ -91,14 +91,14 @@ class SadLeadFormModel {
       }
     }
 
-    if (formattedModel.additionalinformation[0] !== '' && formattedModel.additionalinformation[1] !== '') {
-      formattedModel.additionalinformation = `${formattedModel.additionalinformation[0]} - ${formattedModel.additionalinformation[1]}`;
-    } else if (formattedModel.additionalinformation[0] !== '') {
-      formattedModel.additionalinformation = `${formattedModel.additionalinformation[0]}`;
-    } else if (formattedModel.additionalinformation[1] !== '') {
-      formattedModel.additionalinformation = `${formattedModel.additionalinformation[1]}`;
+    if (formattedModel.additionalInformation[0] !== '' && formattedModel.additionalInformation[1] !== '') {
+      formattedModel.additionalInformation = `${formattedModel.additionalInformation[0]} - ${formattedModel.additionalInformation[1]}`;
+    } else if (formattedModel.additionalInformation[0] !== '') {
+      formattedModel.additionalInformation = `${formattedModel.additionalInformation[0]}`;
+    } else if (formattedModel.additionalInformation[1] !== '') {
+      formattedModel.additionalInformation = `${formattedModel.additionalInformation[1]}`;
     } else {
-      formattedModel.additionalinformation = '';
+      formattedModel.additionalInformation = '';
     }
 
     return formattedModel;
@@ -139,9 +139,9 @@ class SadLeadFormModel {
       .map((checkbox) => checkbox.value);
     */
 
-    formDataAsObject.additionalinformation = [];
-    formDataAsObject.additionalinformation[0] = this._elements.extraFields.time.value;
-    formDataAsObject.additionalinformation[1] = this._elements.extraFields.message.value;
+    formDataAsObject.additionalInformation = [];
+    formDataAsObject.additionalInformation[0] = this._elements.extraFields.time.value;
+    formDataAsObject.additionalInformation[1] = this._elements.extraFields.message.value;
 
     return formDataAsObject;
   }
@@ -359,11 +359,11 @@ class SadLeadFormModel {
       },
       extraFields: {
         // need: document.querySelectorAll('input[data-sad-lead-form-field-name-need-as-array]'),
-        additionalinformation: document.querySelectorAll(
-          '[data-sad-lead-form-field-name-additionalinformation-as-array]'
+        additionalInformation: document.querySelectorAll(
+          '[data-sad-lead-form-field-name-additional-information-as-array]'
         ),
-        time: document.querySelectorAll('[data-sad-lead-form-field-name-additionalinformation-as-array]')[0],
-        message: document.querySelectorAll('[data-sad-lead-form-field-name-additionalinformation-as-array]')[1],
+        time: document.querySelectorAll('[data-sad-lead-form-field-name-additional-information-as-array]')[0],
+        message: document.querySelectorAll('[data-sad-lead-form-field-name-additional-information-as-array]')[1],
       },
       containers: {
         rgpd: document.getElementById('js-sad-lead-form-field-rgpd-container'),

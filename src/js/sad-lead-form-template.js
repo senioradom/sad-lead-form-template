@@ -162,11 +162,11 @@ class SadLeadFormTemplate {
         </div>
 
         <!-- ------------------
-         Je suis disponible : additionalinformation
+         Je suis disponible : additionalInformation
         ------------------- -->
         <div class="sad-lead-form-control sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phoneNumber">
             <label class="sad-lead-form-label">Je suis disponible</label>
-            <select class="sad-lead-form-select" data-sad-lead-form-conditional-display-target="applicant.phoneNumber" data-sad-lead-form-field-name-additionalinformation-as-array>
+            <select class="sad-lead-form-select" data-sad-lead-form-conditional-display-target="applicant.phoneNumber" data-sad-lead-form-field-name-additional-information-as-array>
                 <option selected value="">-</option>
                 <option value="Le matin">Le matin</option>
                 <option value="L’après-midi">L’après-midi</option>
@@ -177,11 +177,11 @@ class SadLeadFormTemplate {
 
     <div class="sad-lead-form__column sad-lead-form__column--full">
         <!-- ------------------
-         Informations complémentaires : additionalinformation
+         Informations complémentaires : additionalInformation
         ------------------- -->
         <div class="sad-lead-form-control">
-            <label class="sad-lead-form-label" for="additionalinformation-line2">Informations complémentaires :</label>
-            <textarea class="sad-lead-form-input" id="additionalinformation-line2" rows="8" cols="40" data-sad-lead-form-field-name-additionalinformation-as-array></textarea>
+            <label class="sad-lead-form-label" for="additionalInformation-line2">Informations complémentaires :</label>
+            <textarea class="sad-lead-form-input" id="additionalInformation-line2" rows="8" cols="40" data-sad-lead-form-field-name-additional-information-as-array></textarea>
         </div>
 
         <!-- ------------------
