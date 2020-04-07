@@ -176,15 +176,25 @@ class SadLeadFormModel {
     });
   }
 
+  _checkFormIsValid() {
+    if (this._submitted) {
+      this._updateModel();
+      this._validate(this._model);
+      if (this._isValid) {
+        this._elements.submit.disabled = false;
+      }
+    }
+  }
+
   _initFormOnChangeEvent() {
     this._elements.form.addEventListener('change', () => {
-      if (this._submitted) {
-        this._updateModel();
-        this._validate(this._model);
-        if (this._isValid) {
-          this._elements.submit.disabled = false;
-        }
-      }
+      this._checkFormIsValid();
+    });
+
+    this._elements.form.querySelectorAll('input, textarea').forEach((el) => {
+      el.oninput = () => {
+        this._checkFormIsValid();
+      };
     });
   }
 
