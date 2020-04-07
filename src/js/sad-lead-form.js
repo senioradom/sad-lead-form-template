@@ -1,3 +1,5 @@
+import SadLeadFormValidator from './sad-lead-form-validator';
+
 class SadLeadFormModel {
   constructor(sadLeadFormUtils, callback) {
     this._initElements();
@@ -8,6 +10,7 @@ class SadLeadFormModel {
     this._callback = callback;
 
     this._sadLeadFormUtils = sadLeadFormUtils;
+    this._sadLeadFormValidator = new SadLeadFormValidator();
 
     this._initEvents();
 
@@ -248,7 +251,7 @@ class SadLeadFormModel {
       this._isValid = false;
     } else if (
       this._elements.toggle.email.checked &&
-      !this._sadLeadFormUtils.validateEmail(this._model.applicant.email)
+      !this._sadLeadFormValidator.validateEmail(this._model.applicant.email)
     ) {
       this._elements.containers.email.classList.add('sad--invalid');
       this._elements.containers.emailField.classList.add('sad--invalid');
@@ -273,11 +276,7 @@ class SadLeadFormModel {
       this._isValid = false;
     }
 
-    if (
-      !this._model.applicant.address.zipcode.match(
-        /^(?:(?:(?:0[1-9]|[1-8]\d|9[0-5])(?:\d{3})?)|97[1-8]|98[4-9]|2[abAB])$/gm
-      )
-    ) {
+    if (!this._sadLeadFormValidator.validateFrenchZipCode(this._model.applicant.address.zipcode)) {
       this._elements.containers.address.classList.add('sad--invalid');
       this._elements.containers.addressField.classList.add('sad--invalid');
 
@@ -293,7 +292,7 @@ class SadLeadFormModel {
       this._elements.containers.phoneField.classList.add('sad--invalid');
 
       this._isValid = false;
-    } else if (!this._model.applicant.phoneNumber.match(/^((\+)33|0)[1-9](\d{2}){4}$/g)) {
+    } else if (!this._sadLeadFormValidator.validateFrenchPhoneNumber(this._model.applicant.phoneNumber)) {
       this._elements.containers.phone.classList.add('sad--invalid');
       this._elements.containers.phoneField.classList.add('sad--invalid');
 
