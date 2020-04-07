@@ -68,6 +68,7 @@ class SadLeadFormTemplate {
             <label class="sad-lead-form-label">Pour une solution</label>
         </div>
 
+        <!--
         <div class="sad-lead-form-flex__container">
             <div class="sad-lead-form-control sad-lead-form-flex__element">
                 <input class="sad-lead-form-control__input" id="need-housing_security" type="checkbox" value="housing_security" data-sad-lead-form-field-name-need-as-array="housing_security">
@@ -76,6 +77,19 @@ class SadLeadFormTemplate {
 
             <div class="sad-lead-form-control sad-lead-form-flex__element">
                 <input class="sad-lead-form-control__input" id="need-outdoor_travel" type="checkbox" value="outdoor_travel" data-sad-lead-form-field-name-need-as-array="outdoor_travel">
+                <label class="sad-lead-form-control__label" for="need-outdoor_travel">Extérieure</label>
+            </div>
+        </div>
+        -->
+
+        <div class="sad-lead-form-flex__container">
+            <div class="sad-lead-form-control sad-lead-form-flex__element">
+                <input class="sad-lead-form-control__input" id="need-housing_security" type="radio" name="need" value="housing_security">
+                <label class="sad-lead-form-control__label" for="need-housing_security">Intérieure</label>
+            </div>
+
+            <div class="sad-lead-form-control sad-lead-form-flex__element">
+                <input class="sad-lead-form-control__input" id="need-outdoor_travel" type="radio" name="need" value="outdoor_travel">
                 <label class="sad-lead-form-control__label" for="need-outdoor_travel">Extérieure</label>
             </div>
         </div>
