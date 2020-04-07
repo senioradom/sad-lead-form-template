@@ -328,7 +328,10 @@ class SadLeadFormModel {
       this._elements.containers.phoneField.classList.add('sad--invalid');
 
       this._isValid = false;
-    } else if (!this._sadLeadFormValidator.validateFrenchPhoneNumber(this._model.applicant.phoneNumber)) {
+    } else if (
+      this._elements.toggle.phone.checked &&
+      !this._sadLeadFormValidator.validateFrenchPhoneNumber(this._model.applicant.phoneNumber)
+    ) {
       this._elements.containers.phone.classList.add('sad--invalid');
       this._elements.containers.phoneField.classList.add('sad--invalid');
 
