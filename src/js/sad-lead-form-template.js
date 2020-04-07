@@ -119,6 +119,8 @@ class SadLeadFormTemplate {
         </div>
         <div class="sad-lead-form-control sad--hidden" data-sad-lead-form-conditional-display-target="applicant.email">
             <input class="sad-lead-form-input sad--hidden" data-sad-lead-form-conditional-display-target="applicant.email" name="applicant.email" type="email" autocapitalize="off" autocorrect="off" autocomplete="email" placeholder="Saisissez votre adresse e-mail">
+
+            <div class="sad-lead-form-error" id="js-sad-lead-form-field-email-error-message"></div>
         </div>
 
         <!-- ------------------
@@ -142,6 +144,8 @@ class SadLeadFormTemplate {
                     <input class="sad-lead-form-input sad--hidden sad-uppercase" data-sad-lead-form-conditional-display-target="applicant.address" name="applicant.address.city" placeholder="Ville" type="text" autocorrect="off" autocomplete="address-level2">
                 </div>
             </div>
+
+             <div class="sad-lead-form-error" id="js-sad-lead-form-field-zipcode-error-message"></div>
         </div>
 
         <!-- ------------------
@@ -152,7 +156,9 @@ class SadLeadFormTemplate {
             <label class="sad-lead-form-control__label" for="js-sad-lead-form-phone-toggle">Être recontacter par téléphone</label>
         </div>
         <div class="sad-lead-form-control sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phoneNumber">
-            <input class="sad-lead-form-input sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phoneNumber" name="applicant.phoneNumber" placeholder="Saisissez votre numéro de téléphone " type="tel" autocorrect="off" autocomplete="tel">
+            <input class="sad-lead-form-input sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phoneNumber" name="applicant.phoneNumber" placeholder="Saisissez votre numéro de téléphone " type="number" autocorrect="off" autocomplete="tel">
+
+            <div class="sad-lead-form-error" id="js-sad-lead-form-field-phone-error-message"></div>
         </div>
 
         <!-- ------------------

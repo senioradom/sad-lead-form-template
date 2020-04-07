@@ -189,6 +189,10 @@ class SadLeadFormModel {
     this._elements.containers.addressField.classList.remove('sad--invalid');
     this._elements.containers.phoneField.classList.remove('sad--invalid');
     this._elements.containers.submit.classList.remove('sad--invalid');
+
+    this._elements.errors.phoneNumber.innerText = '';
+    this._elements.errors.email.innerText = '';
+    this._elements.errors.zipCode.innerText = '';
   }
 
   _validateGender() {
@@ -233,17 +237,24 @@ class SadLeadFormModel {
     } else {
       this._validateEmail();
       this._validateAddress();
-      this._validatePhone();
+      this._validatePhoneNumber();
     }
   }
 
   _validateEmail() {
-    if (
+    if (this._elements.toggle.email.checked && this._model.applicant.email === '') {
+      this._elements.containers.email.classList.add('sad--invalid');
+      this._elements.containers.emailField.classList.add('sad--invalid');
+      this._isValid = false;
+    } else if (
       this._elements.toggle.email.checked &&
-      (this._model.applicant.email === '' || !this._sadLeadFormUtils.validateEmail(this._model.applicant.email))
+      !this._sadLeadFormUtils.validateEmail(this._model.applicant.email)
     ) {
       this._elements.containers.email.classList.add('sad--invalid');
       this._elements.containers.emailField.classList.add('sad--invalid');
+
+      this._elements.errors.email.innerText = 'L’adresse mail n’est pas valide.';
+
       this._isValid = false;
     }
   }
@@ -261,12 +272,33 @@ class SadLeadFormModel {
       this._elements.containers.addressField.classList.add('sad--invalid');
       this._isValid = false;
     }
+
+    if (
+      !this._model.applicant.address.zipcode.match(
+        /^(?:(?:(?:0[1-9]|[1-8]\d|9[0-5])(?:\d{3})?)|97[1-8]|98[4-9]|2[abAB])$/gm
+      )
+    ) {
+      this._elements.containers.address.classList.add('sad--invalid');
+      this._elements.containers.addressField.classList.add('sad--invalid');
+
+      this._elements.errors.zipCode.innerText = 'Ce code postal n’est pas un code postal français valide.';
+
+      this._isValid = false;
+    }
   }
 
-  _validatePhone() {
+  _validatePhoneNumber() {
     if (this._elements.toggle.phone.checked && this._model.applicant.phoneNumber === '') {
       this._elements.containers.phone.classList.add('sad--invalid');
       this._elements.containers.phoneField.classList.add('sad--invalid');
+
+      this._isValid = false;
+    } else if (!this._model.applicant.phoneNumber.match(/^((\+)33|0)[1-9](\d{2}){4}$/g)) {
+      this._elements.containers.phone.classList.add('sad--invalid');
+      this._elements.containers.phoneField.classList.add('sad--invalid');
+
+      this._elements.errors.phoneNumber.innerText = 'Ce numéro n’est pas un numéro de téléphone français valide.';
+
       this._isValid = false;
     }
   }
@@ -305,6 +337,11 @@ class SadLeadFormModel {
         addressField: document.querySelector('[data-sad-lead-form-conditional-display-target="applicant.address"]'),
         phoneField: document.querySelector('[data-sad-lead-form-conditional-display-target="applicant.phoneNumber"]'),
         submit: document.getElementById('js-sad-lead-form-field-submit'),
+      },
+      errors: {
+        email: document.getElementById('js-sad-lead-form-field-email-error-message'),
+        phoneNumber: document.getElementById('js-sad-lead-form-field-phone-error-message'),
+        zipCode: document.getElementById('js-sad-lead-form-field-zipcode-error-message'),
       },
     };
   }
