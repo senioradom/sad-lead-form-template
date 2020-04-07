@@ -37,6 +37,7 @@ new SadLeadFormApp({
   htmlSelector: '#sad-lead-form',
   rgpdDescription: 'Lorem ipsum dolor sit amet..',
   callback: callBackFunction,
-  distributorCode: '5d28a6aa11df4567539b6506',
+  distributorCode: 'XXXXXXXXXXX',
   // agencyCode: 'XXXXXXXXXXX'
 });
+
