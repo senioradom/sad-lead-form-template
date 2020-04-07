@@ -35,8 +35,7 @@ class SadLeadFormModel {
   }
 
   _getFormattedModel() {
-    const formattedModel = {};
-    Object.assign(formattedModel, this._model);
+    const formattedModel = JSON.parse(JSON.stringify(this._model));
 
     formattedModel.tags = ['Site Web Distribueur', 'No_vendor'];
 
