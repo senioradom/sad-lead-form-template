@@ -26,5 +26,19 @@
     "prettier": "^2.0.2",
     "sass": "^1.26.3"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/senioradom/sad-lead-form-template.git"
+  },
+  "keywords": [
+    "SeniorAdom",
+    "form"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/senioradom/sad-lead-form-template/issues"
+  },
+  "homepage": "https://github.com/senioradom/sad-lead-form-template#readme"
 }
