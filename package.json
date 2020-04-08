@@ -2,7 +2,10 @@
   "name": "sad-lead-form-template",
   "version": "1.0.0",
   "description": "sad-lead-form-template",
-  "main": "index.html",
+  "main": "dist/index.html",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "parcel index.html --open",
     "build": "parcel build index.html",
