@@ -1,19 +1,20 @@
 # SAD Lead Form Template
 
-## Download
-Download the distribution (`dist/`) folder.
-
-**NPM**
-```
+## Installation
+```python
+# Install
+npm init
 npm install sad-lead-form-template
-```
 
-**Github**  
-https://github.com/senioradom/sad-lead-form-template/tree/master/dist
+# Go to dist/
+cd node_modules/sad-lead-form-template/dist
+
+# Open index.html
+file:///path/to/project/node_modules/sad-lead-form-template/dist/index.html
+```
 
 ## Library content
-
-```
+```python
 dist/
 ├── index.html
 ├── css
@@ -24,7 +25,7 @@ dist/
 ```
 
 ## Integration
-```
+```HTML
 <!DOCTYPE html>
 <html lang="fr">
 <head>
