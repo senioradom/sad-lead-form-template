@@ -1,5 +1,21 @@
 # sad-lead-form-template
 
+## Usage
+Download the distribution (`dist/`) folder.  
+https://github.com/senioradom/sad-lead-form-template/tree/master/dist
+
+## Library content
+
+```
+.
+├── index.html
+├── css
+│   ├── sad-lead-form.css
+│   └── sad-lead-form-optional.css
+└── js
+    └── sad-lead-form-app.js
+```
+
 ## Integration
 ```
 <!DOCTYPE html>
