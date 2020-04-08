@@ -14,7 +14,7 @@
     ------------------- -->
     <!-- [required] : This is a required stylesheet with no styling whatsoever.
          It's only here to make the application work
-         --> hide/show elements, display error messages....
+         hide/show elements, display error messages....
      -->
     <link rel="stylesheet" href="css/sad-lead-form.css">
 
