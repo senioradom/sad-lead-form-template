@@ -33,9 +33,9 @@ dist/
     <title>Formulaire</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- ------------------
+    <!-- ––––––––––––––––––
      1 . CSS
-    ------------------- -->
+    ––––––––––––––––––– -->
     <!-- [required] : This is a required stylesheet with no styling whatsoever.
          It's only here to make the application work
          hide/show elements, display error messages....
@@ -51,15 +51,15 @@ dist/
 </head>
 <body>
 
-<!-- ------------------
+<!-- ––––––––––––––––––
  2 . HTML element
-------------------- -->
+––––––––––––––––––– -->
 <!-- HTML node in which to insert the form  -->
 <div id="sad-lead-form"></div>
 
-<!-- ------------------
+<!-- ––––––––––––––––––
  4 . JAVASCRIPT
-------------------- -->
+––––––––––––––––––– -->
 <!-- 
 Library inclusion :
 This adds a window (global) object : window.sad.leadFormModelInstance
