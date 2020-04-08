@@ -13,11 +13,13 @@
      1 . CSS
     ------------------- -->
     <!-- [required] : This is a required stylesheet with no styling whatsoever.
-         It's only here to make the application work (hide/show elements, display error messages...).
+         It's only here to make the application work
+         --> hide/show elements, display error messages....
      -->
     <link rel="stylesheet" href="css/sad-lead-form.css">
 
-    <!-- [optional] : This is an optional stylesheet for whoever wants a "plug and play"  type of form : it makes the form nicer to look at.
+    <!-- [optional] : This is an optional stylesheet for whoever wants a "plug and play"  type of form.
+         It makes the form nicer to look at.
          Do not include it if you want to fully customize the application to your needs.
     -->
     <link rel="stylesheet" href="css/sad-lead-form-optional.css">
@@ -44,16 +46,16 @@ This adds a window (global) object : window.sad.leadFormModelInstance
     // --------------------
     // 5 . Callback function
     // --------------------
-    // This is the callback function that will be called when the form is valid and submitted
+    // Callback function that will be called once the form is valid and submitted
     const callBackFunction = () => {
         // We can access the generated model to be submitted (POSTed) to the API as :
         // A JS object
-        const theObj = window.sad.leadFormModelInstance.getFormAsObject();
-        console.log(theObj);
+        const formResultAsAJSObject = window.sad.leadFormModelInstance.getFormAsObject();
+        console.log(formResultAsAJSObject);
 
         // A JSON object
-        const theJSON = window.sad.leadFormModelInstance.getFormAsJSON();
-        console.log(theJSON);
+        const formResultAsAJSONObject = window.sad.leadFormModelInstance.getFormAsJSON();
+        console.log(formResultAsAJSONObject);
 
         // Here is a POST example
         const basicAuth = "Basic ba$icAuthString";
@@ -66,7 +68,7 @@ This adds a window (global) object : window.sad.leadFormModelInstance
         const requestOptions = {
             method: "POST",
             headers: myHeaders,
-            body: theJSON,
+            body: formResultAsAJSONObject,
             redirect: "follow"
         };
 
@@ -82,12 +84,17 @@ This adds a window (global) object : window.sad.leadFormModelInstance
     new SadLeadFormApp.default({
         // [required] distributorCode : Code of the distributor
         distributorCode: "XXXXXXXXXXX",
-        // [required] htmlSelector : HTML selector in which to inject the <form> : In this example : <div id="sad-lead-form"></div>
+
+        // [required] htmlSelector : HTML selector in which to inject the <form>
+        // In this example : <div id="sad-lead-form"></div>
         htmlSelector: "#sad-lead-form",
+
         // [required] rgpdDescription : This is the RGPD distributor description.
         rgpdDescription: "Lorem ipsum dolor sit amet..",
+
         // [required] callback : This is the callback function in which we can do whatever we want with the generated model (typically POST it to the API)
         callback: callBackFunction
+
         // [optional] agencyCode : Code of the agency
         // agencyCode: 'XXXXXXXXXXX'
     });
