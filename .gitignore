@@ -2,7 +2,7 @@
 /.dev/
 /node_modules/
 /.cache/
-/dist/
 package-lock.json
 .csscomb.json
 /yarn.lock
+/dist/**/*.map
