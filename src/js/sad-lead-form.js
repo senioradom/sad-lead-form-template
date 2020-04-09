@@ -142,11 +142,9 @@ class SadLeadFormModel {
       Object.fromEntries(new FormData(this._elements.form))
     );
 
-    /*
-    formDataAsObject.need = Array.from(this._elements.extraFields.need)
+    formDataAsObject.needs = Array.from(this._elements.extraFields.needs)
       .filter((checkbox) => checkbox.checked)
       .map((checkbox) => checkbox.value);
-    */
 
     formDataAsObject.additionalInformation = [];
     formDataAsObject.additionalInformation[0] = this._elements.extraFields.time.value;
@@ -367,7 +365,7 @@ class SadLeadFormModel {
         rgpd: document.getElementById('js-sad-lead-form-field-rgpd'),
       },
       extraFields: {
-        // need: document.querySelectorAll('input[data-sad-lead-form-field-name-need-as-array]'),
+        needs: document.querySelectorAll('input[data-sad-lead-form-field-name-needs-as-array]'),
         additionalInformation: document.querySelectorAll(
           '[data-sad-lead-form-field-name-additional-information-as-array]'
         ),
