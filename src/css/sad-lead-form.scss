@@ -13,6 +13,10 @@
 
 .sad-uppercase {
   text-transform: uppercase;
+
+  @at-root #{&}::placeholder {
+    text-transform: initial;
+  }
 }
 
 .sad--invalid {
