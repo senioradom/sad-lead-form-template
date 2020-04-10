@@ -33,7 +33,7 @@ class SadLeadFormTemplate {
             <label class="sad-lead-form-label" for="applicant-lastname"><span class="sad-lead-form-text-inline">Nom<sup>*</sup></span></label>
             <input class="sad-lead-form-input" id="applicant-lastname" name="applicant.lastname" type="text" autocorrect="off" autocomplete="family-name" placeholder="Nom">
 
-            <div class="sad-lead-form-error">
+            <div class="sad-lead-form-error" id="js-sad-lead-form-field-lastname-error-message">
                 Ce champ est obligatoire.
             </div>
         </div>
@@ -45,7 +45,7 @@ class SadLeadFormTemplate {
             <label class="sad-lead-form-label" for="applicant-firstname"><span class="sad-lead-form-text-inline">Prénom<sup>*</sup></span></label>
             <input class="sad-lead-form-input" id="applicant-firstname" name="applicant.firstname" type="text" autocorrect="off" autocomplete="family-name" placeholder="Prénom">
 
-            <div class="sad-lead-form-error">
+            <div class="sad-lead-form-error" id="js-sad-lead-form-field-firstname-error-message">
                 Ce champ est obligatoire.
             </div>
         </div>
@@ -92,7 +92,7 @@ class SadLeadFormTemplate {
             </label>
 
             <div class="sad-lead-form-error">
-                Veuillez sélectionner au moins un canal de contact
+                Veuillez sélectionner au moins un canal de contact et renseigner les informations
             </div>
         </div>
 
@@ -139,7 +139,7 @@ class SadLeadFormTemplate {
         ------------------- -->
         <div class="sad-lead-form-control" id="js-sad-lead-form-field-phone">
             <input class="sad-lead-form-control__input" id="js-sad-lead-form-phone-toggle" type="checkbox" data-sad-lead-form-conditional-display-toggle="applicant.phoneNumber">
-            <label class="sad-lead-form-control__label" for="js-sad-lead-form-phone-toggle">Être recontacter par téléphone</label>
+            <label class="sad-lead-form-control__label" for="js-sad-lead-form-phone-toggle">Être recontacté par téléphone</label>
         </div>
         <div class="sad-lead-form-control sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phoneNumber">
             <input class="sad-lead-form-input sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phoneNumber" name="applicant.phoneNumber" placeholder="Saisissez votre numéro de téléphone " type="number" autocorrect="off" autocomplete="tel">
@@ -185,7 +185,10 @@ class SadLeadFormTemplate {
         </div>
     </div>
 
-    <div class="sad-lead-form__column sad-lead-form__column--half"></div>
+    <div class="sad-lead-form__column sad-lead-form__column--half">
+        <em><small><sup>*</sup> Mentions obligatoires</small></em>
+    </div>
+
     <div class="sad-lead-form__column sad-lead-form__column--half">
         <div class="sad-lead-form__submit-container">
             <!-- ------------------

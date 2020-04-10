@@ -12,6 +12,10 @@ class SadLeadFormValidator {
   validateFrenchZipCode(str) {
     return str.match(/^(?:(?:(?:0[1-9]|[1-8]\d|9[0-5])(?:\d{3})?)|97[1-8]|98[4-9]|2[abAB])$/gm);
   }
+
+  validateStringWithoutSpecialCharacters(str) {
+    return str.match(/^[a-zA-Z\u00C0-\u00FF- ]*$/gm);
+  }
 }
 
 export default SadLeadFormValidator;

@@ -49,7 +49,7 @@ class SadLeadFormModel {
       formattedModel.agency = this._agencyCode;
     }
 
-    formattedModel.tags = ['Site Web Distribueur', 'No_vendor'];
+    formattedModel.tags = ['Site Web Distributeur', 'No_vendor'];
 
     formattedModel.requestedActions = [];
     if (this._elements.toggle.email.checked || this._elements.toggle.address.checked) {
@@ -235,6 +235,8 @@ class SadLeadFormModel {
     this._elements.containers.phoneField.classList.remove('sad--invalid');
     this._elements.containers.submit.classList.remove('sad--invalid');
 
+    this._elements.errors.lastName.innerText = '';
+    this._elements.errors.firstName.innerText = '';
     this._elements.errors.phoneNumber.innerText = '';
     this._elements.errors.email.innerText = '';
     this._elements.errors.zipCode.innerText = '';
@@ -250,6 +252,14 @@ class SadLeadFormModel {
   _validateLastName() {
     if (this._model.applicant.lastname === '') {
       this._elements.fields.lastName.classList.add('sad--invalid');
+      this._elements.errors.lastName.innerText = 'Ce champ est obligatoire.';
+      this._isValid = false;
+    } else if (!this._sadLeadFormValidator.validateStringWithoutSpecialCharacters(this._model.applicant.lastname)) {
+      this._elements.fields.lastName.classList.add('sad--invalid');
+      this._elements.errors.lastName.innerText = 'Ce champ est obligatoire.';
+
+      this._elements.errors.lastName.innerText = 'Ce champ ne peut contenir de caractères spéciaux';
+
       this._isValid = false;
     }
   }
@@ -257,6 +267,14 @@ class SadLeadFormModel {
   _validateFirstName() {
     if (this._model.applicant.firstname === '') {
       this._elements.fields.firstName.classList.add('sad--invalid');
+      this._elements.errors.firstName.innerText = 'Ce champ est obligatoire.';
+      this._isValid = false;
+    } else if (!this._sadLeadFormValidator.validateStringWithoutSpecialCharacters(this._model.applicant.firstname)) {
+      this._elements.fields.firstName.classList.add('sad--invalid');
+      this._elements.errors.firstName.innerText = 'Ce champ est obligatoire.';
+
+      this._elements.errors.firstName.innerText = 'Ce champ ne peut contenir de caractères spéciaux';
+
       this._isValid = false;
     }
   }
@@ -384,6 +402,8 @@ class SadLeadFormModel {
         submit: document.getElementById('js-sad-lead-form-field-submit'),
       },
       errors: {
+        lastName: document.getElementById('js-sad-lead-form-field-lastname-error-message'),
+        firstName: document.getElementById('js-sad-lead-form-field-firstname-error-message'),
         email: document.getElementById('js-sad-lead-form-field-email-error-message'),
         phoneNumber: document.getElementById('js-sad-lead-form-field-phone-error-message'),
         zipCode: document.getElementById('js-sad-lead-form-field-zipcode-error-message'),
