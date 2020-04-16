@@ -628,12 +628,16 @@ function () {
     key: "_validateEmail",
     value: function _validateEmail() {
       if (this._elements.toggle.email.checked && this._model.applicant.email === '') {
+        this._elements.containers.media.classList.add('sad--invalid');
+
         this._elements.containers.email.classList.add('sad--invalid');
 
         this._elements.containers.emailField.classList.add('sad--invalid');
 
         this._isValid = false;
       } else if (this._elements.toggle.email.checked && !this._sadLeadFormValidator.validateEmail(this._model.applicant.email)) {
+        this._elements.containers.media.classList.add('sad--invalid');
+
         this._elements.containers.email.classList.add('sad--invalid');
 
         this._elements.containers.emailField.classList.add('sad--invalid');
@@ -646,12 +650,16 @@ function () {
     key: "_validateAddress",
     value: function _validateAddress() {
       if (this._elements.toggle.address.checked && (this._model.applicant.address.l2 === '' && this._model.applicant.address.l3 === '' && this._model.applicant.address.l4 === '' || this._model.applicant.address.zipcode === '' || this._model.applicant.address.city === '')) {
+        this._elements.containers.media.classList.add('sad--invalid');
+
         this._elements.containers.address.classList.add('sad--invalid');
 
         this._elements.containers.addressField.classList.add('sad--invalid');
 
         this._isValid = false;
       } else if (this._elements.toggle.address.checked && !this._sadLeadFormValidator.validateFrenchZipCode(this._model.applicant.address.zipcode)) {
+        this._elements.containers.media.classList.add('sad--invalid');
+
         this._elements.containers.address.classList.add('sad--invalid');
 
         this._elements.containers.addressField.classList.add('sad--invalid');
@@ -664,12 +672,16 @@ function () {
     key: "_validatePhoneNumber",
     value: function _validatePhoneNumber() {
       if (this._elements.toggle.phone.checked && this._model.applicant.phoneNumber === '') {
+        this._elements.containers.media.classList.add('sad--invalid');
+
         this._elements.containers.phone.classList.add('sad--invalid');
 
         this._elements.containers.phoneField.classList.add('sad--invalid');
 
         this._isValid = false;
       } else if (this._elements.toggle.phone.checked && !this._sadLeadFormValidator.validateFrenchPhoneNumber(this._model.applicant.phoneNumber)) {
+        this._elements.containers.media.classList.add('sad--invalid');
+
         this._elements.containers.phone.classList.add('sad--invalid');
 
         this._elements.containers.phoneField.classList.add('sad--invalid');
