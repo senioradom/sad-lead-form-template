@@ -57,15 +57,17 @@ class SadLeadFormModel {
       formattedModel.requestedActions.push('send_brochures');
     }
 
+    formattedModel.applicant.phoneNumbers = [];
     if (this._elements.toggle.phone.checked) {
       formattedModel.requestedActions.push('wants_to_be_called');
-      formattedModel.applicant.phoneNumber = {
+
+      // Actually, we manage multiple phone numbers so we put the input phone number in an array named phoneNumbers
+      formattedModel.applicant.phoneNumbers.push({
         countryCode: 33,
-        nationalNumber: formattedModel.applicant.phoneNumber,
-      };
-    } else {
-      delete formattedModel.applicant.phoneNumber;
+        nationalNumber: formattedModel.applicant.phoneNumber
+      });
     }
+    delete formattedModel.applicant.phoneNumber;
 
     if (this._elements.toggle.address.checked) {
       formattedModel.applicant.address.l2 = formattedModel.applicant.address.l2.toUpperCase();
@@ -95,9 +97,7 @@ class SadLeadFormModel {
         formattedModel.beneficiary.address = formattedModel.applicant.address;
       }
 
-      if (formattedModel.applicant.hasOwnProperty('phoneNumber')) {
-        formattedModel.beneficiary.phoneNumber = formattedModel.applicant.phoneNumber;
-      }
+      formattedModel.beneficiary.phoneNumbers = formattedModel.applicant.phoneNumbers;
     }
 
     if (formattedModel.additionalInformation[0] !== '' && formattedModel.additionalInformation[1] !== '') {
