@@ -6,4 +6,4 @@ package-lock.json
 .csscomb.json
 /yarn.lock
 *.iml
-/dist
+/dist/**/*.map
