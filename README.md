@@ -73,20 +73,14 @@ This adds a window (global) object : window.sad.leadFormModelInstance
     // Callback function that will be called once the form is valid and submitted
     const callBackFunction = () => {
         // We can access the generated model to be submitted (POSTed) to the API as :
-        // A JS object
-        const formResultAsAJSObject = window.sad.leadFormModelInstance.getFormAsObject();
-        console.log(formResultAsAJSObject);
-
         // A JSON object
         const formResultAsAJSONObject = window.sad.leadFormModelInstance.getFormAsJSON();
         console.log(formResultAsAJSONObject);
-
-        // Here is a POST example
-        const basicAuth = "Basic ba$icAuthString";
-        const postURL = "https://example.com/api/3/leads";
+        // Or, a JS object
+        const formResultAsAJSObject = window.sad.leadFormModelInstance.getFormAsObject();
+        console.log(formResultAsAJSObject);
 
         const myHeaders = new Headers();
-        myHeaders.append("Authorization", basicAuth);
         myHeaders.append("Content-Type", "application/json");
 
         const requestOptions = {
@@ -96,10 +90,19 @@ This adds a window (global) object : window.sad.leadFormModelInstance
             redirect: "follow"
         };
 
-        fetch(postURL, requestOptions)
+        // POST the Lead to your backend project where you'll use your credentials to send it to our API.
+        fetch("https://your-project-backend/uri", requestOptions)
             .then((response) => response.text())
-            .then((result) => console.log(result))
-            .catch((error) => console.log("error", error));
+            .then(() => {
+                // Success : replace the form with a message
+                document.getElementById('sad-lead-form').innerHTML = '<p>Le formulaire a bien été transmis.</p>';
+            })
+            .catch(error => {
+                // Error : Print an error and re-enable form edition
+                alert('Une erreur est survenue lors de la soumission du formulaire.');
+                document.getElementById('sad-lead-form').style.pointerEvents = 'auto';
+                console.log(error);
+            });
     };
 
     // --------------------
