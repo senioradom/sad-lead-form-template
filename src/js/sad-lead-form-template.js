@@ -88,7 +88,7 @@ class SadLeadFormTemplate {
 
         <div class="sad-lead-form-control" id="js-sad-lead-form-field-media">
             <label class="sad-lead-form-label">
-                Je souhaite recevoir de la documentation par&nbsp;:
+                Je souhaite&nbsp;:
             </label>
 
             <div class="sad-lead-form-error">
@@ -101,7 +101,7 @@ class SadLeadFormTemplate {
         ------------------- -->
         <div class="sad-lead-form-control" id="js-sad-lead-form-field-email">
             <input class="sad-lead-form-control__input" id="js-sad-lead-form-email-toggle" type="checkbox" data-sad-lead-form-conditional-display-toggle="applicant.email">
-            <label class="sad-lead-form-control__label" for="js-sad-lead-form-email-toggle">E-mail</label>
+            <label class="sad-lead-form-control__label" for="js-sad-lead-form-email-toggle">Recevoir de la documentation par E-mail</label>
         </div>
         <div class="sad-lead-form-control sad--hidden" data-sad-lead-form-conditional-display-target="applicant.email">
             <input class="sad-lead-form-input sad--hidden" data-sad-lead-form-conditional-display-target="applicant.email" name="applicant.email" type="email" autocapitalize="off" autocorrect="off" autocomplete="email" placeholder="Saisissez votre adresse e-mail">
@@ -114,7 +114,7 @@ class SadLeadFormTemplate {
         ------------------- -->
         <div class="sad-lead-form-control" id="js-sad-lead-form-field-address">
             <input class="sad-lead-form-control__input" id="js-sad-lead-form-address-toggle" type="checkbox" data-sad-lead-form-conditional-display-toggle="applicant.address">
-            <label class="sad-lead-form-control__label" for="js-sad-lead-form-address-toggle">Par courrier</label>
+            <label class="sad-lead-form-control__label" for="js-sad-lead-form-address-toggle">Recevoir de la documentation par courrier</label>
         </div>
         <div class="sad-lead-form-control sad--hidden" data-sad-lead-form-conditional-display-target="applicant.address">
             <input class="sad-lead-form-input sad--hidden sad-uppercase" data-sad-lead-form-conditional-display-target="applicant.address" name="applicant.address.l2" placeholder="Appt / Esc / Etage" type="text" autocorrect="off">
@@ -139,7 +139,7 @@ class SadLeadFormTemplate {
         ------------------- -->
         <div class="sad-lead-form-control" id="js-sad-lead-form-field-phone">
             <input class="sad-lead-form-control__input" id="js-sad-lead-form-phone-toggle" type="checkbox" data-sad-lead-form-conditional-display-toggle="applicant.phoneNumber">
-            <label class="sad-lead-form-control__label" for="js-sad-lead-form-phone-toggle">Être recontacté par téléphone</label>
+            <label class="sad-lead-form-control__label" for="js-sad-lead-form-phone-toggle">Être rappelé</label>
         </div>
         <div class="sad-lead-form-control sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phoneNumber">
             <input class="sad-lead-form-input sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phoneNumber" name="applicant.phoneNumber" placeholder="Saisissez votre numéro de téléphone " type="number" autocorrect="off" autocomplete="tel">
