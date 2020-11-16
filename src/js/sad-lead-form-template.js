@@ -170,6 +170,10 @@ class SadLeadFormTemplate {
             <textarea class="sad-lead-form-input" id="additionalInformation-line2" rows="8" cols="40" data-sad-lead-form-field-name-additional-information-as-array></textarea>
         </div>
 
+        <div class="sad-lead-form-control">
+            <em><small><sup>*</sup> Mentions obligatoires</small></em>
+        </div>
+
         <!-- ------------------
          RGPD
         ------------------- -->
@@ -183,10 +187,6 @@ class SadLeadFormTemplate {
                 Autorisation obligatoire.
             </div>
         </div>
-    </div>
-
-    <div class="sad-lead-form__column sad-lead-form__column--half">
-        <em><small><sup>*</sup> Mentions obligatoires</small></em>
     </div>
 
     <div class="sad-lead-form__column sad-lead-form__column--half">
