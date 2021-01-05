@@ -112,6 +112,9 @@ This adds a window (global) object : window.sad.leadFormModelInstance
         // [required] distributorCode : Code of the distributor
         distributorCode: "XXXXXXXXXXX",
 
+        // [required] agencyCode : Code of the agency
+        agencyCode: 'XXXXXXXXXXX',
+        
         // [required] htmlSelector : HTML selector in which to inject the <form>
         // In this example : <div id="sad-lead-form"></div>
         htmlSelector: "#sad-lead-form",
@@ -121,9 +124,6 @@ This adds a window (global) object : window.sad.leadFormModelInstance
 
         // [required] callback : This is the callback function in which we can do whatever we want with the generated model (typically POST it to the API)
         callback: callBackFunction
-
-        // [optional] agencyCode : Code of the agency
-        // agencyCode: 'XXXXXXXXXXX'
     });
 </script>
 </body>

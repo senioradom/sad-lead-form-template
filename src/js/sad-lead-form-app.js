@@ -7,7 +7,7 @@ import SadLeadFormModel from './sad-lead-form';
  * @param {type} config.rgpdDescription  : RGPD description appearing in the form
  * @param {type} config.callback         : Function to be called when the submitted form is valid
  * @param {type} config.distributorCode  : Code of the distributor
- * @param {type} config.agencyCode       : Code of the agency (NOT required)
+ * @param {type} config.agencyCode       : Code of the agency
  *
  * new SadLeadFormApp({
  *   htmlSelector: '#sad-lead-form',
@@ -25,17 +25,19 @@ class SadLeadFormApp {
       return;
     }
 
+    if (!config.hasOwnProperty('agencyCode')) {
+      document.querySelector(config.htmlSelector).innerHTML = "Le code de l'agence est requis…";
+      return;
+    }
+
     this._sadLeadFormTemplate = new SadLeadFormTemplate(config.rgpdDescription);
     document.querySelector(config.htmlSelector).innerHTML = this._sadLeadFormTemplate.getApplicationTemplate();
 
     const params = {
       distributorCode: config.distributorCode,
+      agencyCode: config.agencyCode,
       callback: config.callback,
     };
-
-    if (!config.hasOwnProperty('agencyCode')) {
-      params.agencyCode = config.agencyCode;
-    }
 
     new SadLeadFormModel(params);
   }

@@ -276,13 +276,8 @@ var SadLeadFormModel = /*#__PURE__*/function () {
     this._submitted = false;
     this._isValid = false;
     this._distributorCode = config.distributorCode;
+    this._agencyCode = config.agencyCode;
     this._callback = config.callback;
-    this._agencyCode = null;
-
-    if (!config.hasOwnProperty('agencyCode')) {
-      this._agencyCode = config.agencyCode;
-    }
-
     this._sadLeadFormUtils = new _sadLeadFormUtils.default();
     this._sadLeadFormValidator = new _sadLeadFormValidator.default();
 
@@ -315,11 +310,7 @@ var SadLeadFormModel = /*#__PURE__*/function () {
     value: function _getFormattedModel() {
       var formattedModel = JSON.parse(JSON.stringify(this._model));
       formattedModel.distributor = this._distributorCode;
-
-      if (this._agency) {
-        formattedModel.agency = this._agencyCode;
-      }
-
+      formattedModel.agency = this._agencyCode;
       formattedModel.tags = ['Site Web Distributeur', 'No_vendor'];
       formattedModel.requestedActions = [];
 
@@ -756,7 +747,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @param {type} config.rgpdDescription  : RGPD description appearing in the form
  * @param {type} config.callback         : Function to be called when the submitted form is valid
  * @param {type} config.distributorCode  : Code of the distributor
- * @param {type} config.agencyCode       : Code of the agency (NOT required)
+ * @param {type} config.agencyCode       : Code of the agency
  *
  * new SadLeadFormApp({
  *   htmlSelector: '#sad-lead-form',
@@ -775,17 +766,18 @@ var SadLeadFormApp = function SadLeadFormApp(config) {
     return;
   }
 
+  if (!config.hasOwnProperty('agencyCode')) {
+    document.querySelector(config.htmlSelector).innerHTML = "Le code de l'agence est requis…";
+    return;
+  }
+
   this._sadLeadFormTemplate = new _sadLeadFormTemplate.default(config.rgpdDescription);
   document.querySelector(config.htmlSelector).innerHTML = this._sadLeadFormTemplate.getApplicationTemplate();
   var params = {
     distributorCode: config.distributorCode,
+    agencyCode: config.agencyCode,
     callback: config.callback
   };
-
-  if (!config.hasOwnProperty('agencyCode')) {
-    params.agencyCode = config.agencyCode;
-  }
-
   new _sadLeadForm.default(params);
 };
 

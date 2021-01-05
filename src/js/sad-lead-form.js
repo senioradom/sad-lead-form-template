@@ -9,12 +9,9 @@ class SadLeadFormModel {
     this._isValid = false;
 
     this._distributorCode = config.distributorCode;
-    this._callback = config.callback;
+    this._agencyCode = config.agencyCode;
 
-    this._agencyCode = null;
-    if (!config.hasOwnProperty('agencyCode')) {
-      this._agencyCode = config.agencyCode;
-    }
+    this._callback = config.callback;
 
     this._sadLeadFormUtils = new SadLeadFormUtils();
     this._sadLeadFormValidator = new SadLeadFormValidator();
@@ -45,9 +42,7 @@ class SadLeadFormModel {
     const formattedModel = JSON.parse(JSON.stringify(this._model));
 
     formattedModel.distributor = this._distributorCode;
-    if (this._agency) {
-      formattedModel.agency = this._agencyCode;
-    }
+    formattedModel.agency = this._agencyCode;
 
     formattedModel.tags = ['Site Web Distributeur', 'No_vendor'];
 
@@ -64,7 +59,7 @@ class SadLeadFormModel {
       // Actually, we manage multiple phone numbers so we put the input phone number in an array named phoneNumbers
       formattedModel.applicant.phoneNumbers.push({
         countryCode: 33,
-        nationalNumber: formattedModel.applicant.phoneNumber
+        nationalNumber: formattedModel.applicant.phoneNumber,
       });
     }
     delete formattedModel.applicant.phoneNumber;
