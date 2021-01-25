@@ -60,25 +60,6 @@ class SadLeadFormTemplate {
                 <option value="other">Pour un proche</option>
             </select>
         </div>
-
-        <!-- ------------------
-         Pour une solution
-        ------------------- -->
-        <div class="sad-lead-form-control">
-            <label class="sad-lead-form-label">Pour une solution</label>
-        </div>
-
-        <div class="sad-lead-form-flex__container">
-            <div class="sad-lead-form-control sad-lead-form-flex__element">
-                <input class="sad-lead-form-control__input" id="needs-housing_security" type="checkbox" value="housing_security" data-sad-lead-form-field-name-needs-as-array="housing_security">
-                <label class="sad-lead-form-control__label" for="needs-housing_security">Intérieure</label>
-            </div>
-
-            <div class="sad-lead-form-control sad-lead-form-flex__element">
-                <input class="sad-lead-form-control__input" id="needs-outdoor_travel" type="checkbox" value="outdoor_travel" data-sad-lead-form-field-name-needs-as-array="outdoor_travel">
-                <label class="sad-lead-form-control__label" for="needs-outdoor_travel">Extérieure</label>
-            </div>
-        </div>
     </div>
 
     <!-- ------------------
