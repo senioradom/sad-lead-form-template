@@ -40,4 +40,3 @@ new SadLeadFormApp({
   distributorCode: 'XXXXXXXXXXX',
   // agencyCode: 'XXXXXXXXXXX'
 });
-
