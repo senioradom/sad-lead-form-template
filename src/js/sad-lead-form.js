@@ -278,20 +278,18 @@ class SadLeadFormModel {
   }
 
   _validateMeanOfCommunication() {
-    if (
-      !this._elements.toggle.email.checked &&
-      !this._elements.toggle.address.checked &&
-      !this._elements.toggle.phone.checked
-    ) {
+    this._validateAddress();
+
+    if (!this._elements.toggle.phone.checked && !this._elements.toggle.email.checked) {
       this._elements.containers.media.classList.add('sad--invalid');
-      this._elements.containers.email.classList.add('sad--invalid');
-      this._elements.containers.address.classList.add('sad--invalid');
+
       this._elements.containers.phone.classList.add('sad--invalid');
+      this._elements.containers.email.classList.add('sad--invalid');
+
       this._isValid = false;
     } else {
-      this._validateEmail();
-      this._validateAddress();
       this._validatePhoneNumber();
+      this._validateEmail();
     }
   }
 
