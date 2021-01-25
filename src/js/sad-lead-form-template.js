@@ -78,6 +78,32 @@ class SadLeadFormTemplate {
         </div>
 
         <!-- ------------------
+         Phone : applicant.phoneNumber
+        ------------------- -->
+        <div class="sad-lead-form-control" id="js-sad-lead-form-field-phone">
+            <input class="sad-lead-form-control__input" id="js-sad-lead-form-phone-toggle" type="checkbox" data-sad-lead-form-conditional-display-toggle="applicant.phoneNumber">
+            <label class="sad-lead-form-control__label" for="js-sad-lead-form-phone-toggle">Être rappelé</label>
+        </div>
+        <div class="sad-lead-form-control sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phoneNumber">
+            <input class="sad-lead-form-input sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phoneNumber" name="applicant.phoneNumber" placeholder="Saisissez votre numéro de téléphone " type="number" autocorrect="off" autocomplete="tel">
+
+            <div class="sad-lead-form-error" id="js-sad-lead-form-field-phone-error-message"></div>
+        </div>
+
+        <!-- ------------------
+         Je suis disponible : additionalInformation
+        ------------------- -->
+        <div class="sad-lead-form-control sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phoneNumber">
+            <label class="sad-lead-form-label">Je suis disponible</label>
+            <select class="sad-lead-form-select" data-sad-lead-form-conditional-display-target="applicant.phoneNumber" data-sad-lead-form-field-name-additional-information-as-array>
+                <option selected value="">-</option>
+                <option value="Le matin">Le matin</option>
+                <option value="L’après-midi">L’après-midi</option>
+                <option value="Toute la journée">Toute la journée</option>
+            </select>
+        </div>
+
+        <!-- ------------------
          E-mail : applicant.email
         ------------------- -->
         <div class="sad-lead-form-control" id="js-sad-lead-form-field-email">
@@ -113,32 +139,6 @@ class SadLeadFormTemplate {
             </div>
 
              <div class="sad-lead-form-error" id="js-sad-lead-form-field-zipcode-error-message"></div>
-        </div>
-
-        <!-- ------------------
-         Phone : applicant.phoneNumber
-        ------------------- -->
-        <div class="sad-lead-form-control" id="js-sad-lead-form-field-phone">
-            <input class="sad-lead-form-control__input" id="js-sad-lead-form-phone-toggle" type="checkbox" data-sad-lead-form-conditional-display-toggle="applicant.phoneNumber">
-            <label class="sad-lead-form-control__label" for="js-sad-lead-form-phone-toggle">Être rappelé</label>
-        </div>
-        <div class="sad-lead-form-control sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phoneNumber">
-            <input class="sad-lead-form-input sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phoneNumber" name="applicant.phoneNumber" placeholder="Saisissez votre numéro de téléphone " type="number" autocorrect="off" autocomplete="tel">
-
-            <div class="sad-lead-form-error" id="js-sad-lead-form-field-phone-error-message"></div>
-        </div>
-
-        <!-- ------------------
-         Je suis disponible : additionalInformation
-        ------------------- -->
-        <div class="sad-lead-form-control sad--hidden" data-sad-lead-form-conditional-display-target="applicant.phoneNumber">
-            <label class="sad-lead-form-label">Je suis disponible</label>
-            <select class="sad-lead-form-select" data-sad-lead-form-conditional-display-target="applicant.phoneNumber" data-sad-lead-form-field-name-additional-information-as-array>
-                <option selected value="">-</option>
-                <option value="Le matin">Le matin</option>
-                <option value="L’après-midi">L’après-midi</option>
-                <option value="Toute la journée">Toute la journée</option>
-            </select>
         </div>
     </div>
 
