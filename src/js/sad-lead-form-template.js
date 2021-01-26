@@ -73,7 +73,7 @@ class SadLeadFormTemplate {
             </label>
 
             <div class="sad-lead-form-error">
-                Veuillez sélectionner au moins un canal de contact parmi email et téléphone et renseigner les informations
+                Merci de renseigner au moins un numéro de téléphone ou une adresse mail
             </div>
         </div>
 
