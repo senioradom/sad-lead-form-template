@@ -3,7 +3,6 @@
 ## Installation
 ```python
 # Install
-npm init
 npm install sad-lead-form-template
 
 # Go to dist/
