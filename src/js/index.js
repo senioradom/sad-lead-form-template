@@ -38,5 +38,6 @@ new SadLeadFormApp({
   rgpdDescription: 'Lorem ipsum dolor sit amet..',
   callback: callBackFunction,
   distributorCode: 'XXXXXXXXXXX',
-  // agencyCode: 'XXXXXXXXXXX'
+  agencyCode: 'XXXXXXXXXXX',
+  agencies: [{code: 'code1', name: 'Name1'}, {code: 'code2', name: 'Name2'}]
 });

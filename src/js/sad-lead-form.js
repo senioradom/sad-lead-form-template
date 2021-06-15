@@ -10,6 +10,7 @@ class SadLeadFormModel {
 
     this._distributorCode = config.distributorCode;
     this._agencyCode = config.agencyCode;
+    this._agencies = config.agencies;
 
     this._callback = config.callback;
 
@@ -42,7 +43,10 @@ class SadLeadFormModel {
     const formattedModel = JSON.parse(JSON.stringify(this._model));
 
     formattedModel.distributor = this._distributorCode;
-    formattedModel.agency = this._agencyCode;
+
+    if (!this._agencies) {
+      formattedModel.agency = this._agencyCode;
+    }
 
     formattedModel.tags = ['Site Web Distributeur', 'No_vendor'];
 
@@ -114,6 +118,11 @@ class SadLeadFormModel {
     this._cleanErrors();
 
     this._validateGender();
+
+    if (this._agencies) {
+      this._validateAgency();
+    }
+
     this._validateLastName();
     this._validateFirstName();
     this._validateRGPD();
@@ -214,6 +223,7 @@ class SadLeadFormModel {
 
   _cleanErrors() {
     this._elements.fields.iAm.classList.remove('sad--invalid');
+    this._elements.fields.agency.classList.remove('sad--invalid');
     this._elements.fields.lastName.classList.remove('sad--invalid');
     this._elements.fields.firstName.classList.remove('sad--invalid');
     this._elements.containers.rgpd.classList.remove('sad--invalid');
@@ -236,6 +246,13 @@ class SadLeadFormModel {
   _validateGender() {
     if (this._model.applicant.gender === '') {
       this._elements.fields.iAm.classList.add('sad--invalid');
+      this._isValid = false;
+    }
+  }
+
+  _validateAgency() {
+    if (this._model.agency === '') {
+      this._elements.fields.agency.classList.add('sad--invalid');
       this._isValid = false;
     }
   }
@@ -376,6 +393,7 @@ class SadLeadFormModel {
         lastName: document.getElementById('js-sad-lead-form-field-lastname'),
         firstName: document.getElementById('js-sad-lead-form-field-first-name'),
         rgpd: document.getElementById('js-sad-lead-form-field-rgpd'),
+        agency: document.getElementById('js-sad-lead-form-field-agency'),
       },
       extraFields: {
         additionalInformation: document.querySelectorAll(

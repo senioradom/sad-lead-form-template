@@ -1,6 +1,31 @@
 class SadLeadFormTemplate {
-  constructor(rgpdDescription) {
+  constructor(rgpdDescription, agencies) {
     this._rgpdDescription = rgpdDescription;
+    this._agenciesSelectorTemplate = this.getAgenciesTemplate(agencies);
+  }
+
+  getAgenciesTemplate(agencies) {
+    if (!agencies) {
+      return ``;
+    }
+
+    let options = '';
+    for (const agency of agencies) {
+      options += `<option value="${agency.code}">${agency.name}</option>`
+    }
+
+    return `
+    <div class="sad-lead-form-control" id="js-sad-lead-form-field-agency">
+            <label class="sad-lead-form-label"><span class="sad-lead-form-text-inline">Point de vente<sup>*</sup></span></label>
+            <select name="agency" class="sad-lead-form-select">
+                <option selected value="">-</option>
+                ${options}
+            </select>
+
+            <div class="sad-lead-form-error">
+                Ce champ est obligatoire.
+            </div>
+        </div>`;
   }
 
   getApplicationTemplate() {
@@ -140,6 +165,11 @@ class SadLeadFormTemplate {
 
              <div class="sad-lead-form-error" id="js-sad-lead-form-field-zipcode-error-message"></div>
         </div>
+
+        <!-- ------------------
+         Agence : applicant.lastname
+        ------------------- -->
+        ${this._agenciesSelectorTemplate}
     </div>
 
     <div class="sad-lead-form__column sad-lead-form__column--full">

@@ -25,18 +25,19 @@ class SadLeadFormApp {
       return;
     }
 
-    if (!config.hasOwnProperty('agencyCode')) {
+    if (!config.hasOwnProperty('agencyCode') && !config.hasOwnProperty('agencies')) {
       document.querySelector(config.htmlSelector).innerHTML = "Le code de l'agence est requis…";
       return;
     }
 
-    this._sadLeadFormTemplate = new SadLeadFormTemplate(config.rgpdDescription);
+    this._sadLeadFormTemplate = new SadLeadFormTemplate(config.rgpdDescription, config.agencies);
     document.querySelector(config.htmlSelector).innerHTML = this._sadLeadFormTemplate.getApplicationTemplate();
 
     const params = {
       distributorCode: config.distributorCode,
       agencyCode: config.agencyCode,
-      callback: config.callback,
+      agencies: config.agencies,
+      callback: config.callback
     };
 
     new SadLeadFormModel(params);

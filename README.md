@@ -1,6 +1,7 @@
 # SAD Lead Form Template
 
-## Installation
+## Usage
+### Installation
 ```python
 # Install
 npm init
@@ -13,7 +14,7 @@ cd node_modules/sad-lead-form-template/dist
 file:///path/to/project/node_modules/sad-lead-form-template/dist/index.html
 ```
 
-## Library content
+### Library content
 ```python
 dist/
 ├── index.html
@@ -24,7 +25,7 @@ dist/
     └── sad-lead-form-app.js
 ```
 
-## Integration
+### Integration
 ```HTML
 <!DOCTYPE html>
 <html lang="fr">
@@ -112,8 +113,13 @@ This adds a window (global) object : window.sad.leadFormModelInstance
         // [required] distributorCode : Code of the distributor
         distributorCode: "XXXXXXXXXXX",
 
-        // [required] agencyCode : Code of the agency
+        // agencyCode : Code of the agency
+        // Required if agencies not supplied
         agencyCode: 'XXXXXXXXXXX',
+
+        // agencies : List of agencies
+        // Required if agencyCode not supplied
+        agencies: [{code: 'agency_code', name:'Agency Name'}],
         
         // [required] htmlSelector : HTML selector in which to inject the <form>
         // In this example : <div id="sad-lead-form"></div>
@@ -129,4 +135,26 @@ This adds a window (global) object : window.sad.leadFormModelInstance
 </body>
 </html>
 
+```
+
+## Development (Senioradom)
+### Build
+
+```python
+rm -rf dist;
+mkdir ./dist/
+parcel build src/js/sad-lead-form-app.js --public-url ./ --out-dir ./dist/js  --no-minify --global SadLeadFormApp
+parcel build src/css/sad-lead-form.scss --public-url ./ --out-dir ./dist/css
+parcel build src/css/sad-lead-form-optional.scss --public-url ./ --out-dir ./dist/css
+cp to-dist/index.html ./dist/
+```
+
+### Dist
+Increment package.json version.
+
+```python
+# If not logged
+npm login
+
+npm publish
 ```
