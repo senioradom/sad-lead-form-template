@@ -113,14 +113,15 @@ This adds a window (global) object : window.sad.leadFormModelInstance
         // [required] distributorCode : Code of the distributor
         distributorCode: "XXXXXXXXXXX",
 
-        // agencyCode : Code of the agency
-        // Required if agencies not supplied
+        // [required] agencyCode : Code of the agency
         agencyCode: 'XXXXXXXXXXX',
 
-        // agencies : List of agencies
-        // Required if agencyCode not supplied
-        agencies: [{code: 'agency_code', name:'Agency Name'}],
-        
+        // providerConfig : List of providers
+        providerConfig: {
+            type: 'agency',
+            selections: [{code: 'code1', name: 'Name1'}, {code: 'code2', name: 'Name2'}]
+        }
+
         // [required] htmlSelector : HTML selector in which to inject the <form>
         // In this example : <div id="sad-lead-form"></div>
         htmlSelector: "#sad-lead-form",

@@ -1,23 +1,23 @@
 class SadLeadFormTemplate {
-  constructor(rgpdDescription, agencies) {
+  constructor(rgpdDescription, providerConfig) {
     this._rgpdDescription = rgpdDescription;
-    this._agenciesSelectorTemplate = this.getAgenciesTemplate(agencies);
+    this._providerSelectorTemplate = this.getProviderTemplate(providerConfig);
   }
 
-  getAgenciesTemplate(agencies) {
-    if (!agencies) {
+  getProviderTemplate(providerConfig) {
+    if (!providerConfig) {
       return ``;
     }
 
     let options = '';
-    for (const agency of agencies) {
-      options += `<option value="${agency.code}">${agency.name}</option>`
+    for (const provider of providerConfig.selections) {
+      options += `<option value="${provider.code}">${provider.name}</option>`
     }
 
     return `
-    <div class="sad-lead-form-control" id="js-sad-lead-form-field-agency">
+    <div class="sad-lead-form-control" id="js-sad-lead-form-field-provider">
             <label class="sad-lead-form-label"><span class="sad-lead-form-text-inline">Point de vente<sup>*</sup></span></label>
-            <select name="agency" class="sad-lead-form-select">
+            <select name="provider" class="sad-lead-form-select">
                 <option selected value="">-</option>
                 ${options}
             </select>
@@ -169,7 +169,7 @@ class SadLeadFormTemplate {
         <!-- ------------------
          Agence : applicant.lastname
         ------------------- -->
-        ${this._agenciesSelectorTemplate}
+        ${this._providerSelectorTemplate}
     </div>
 
     <div class="sad-lead-form__column sad-lead-form__column--full">

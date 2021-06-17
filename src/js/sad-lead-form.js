@@ -10,7 +10,7 @@ class SadLeadFormModel {
 
     this._distributorCode = config.distributorCode;
     this._agencyCode = config.agencyCode;
-    this._agencies = config.agencies;
+    this._providerConfig = config.providerConfig;
 
     this._callback = config.callback;
 
@@ -44,7 +44,12 @@ class SadLeadFormModel {
 
     formattedModel.distributor = this._distributorCode;
 
-    if (!this._agencies) {
+    if (this._providerConfig) {
+      formattedModel.provider = {
+        type: this._providerConfig.type,
+        code: formattedModel.provider
+      };
+    } else {
       formattedModel.agency = this._agencyCode;
     }
 
@@ -119,8 +124,8 @@ class SadLeadFormModel {
 
     this._validateGender();
 
-    if (this._agencies) {
-      this._validateAgency();
+    if (this._providerConfig) {
+      this._validateProvider();
     }
 
     this._validateLastName();
@@ -235,8 +240,8 @@ class SadLeadFormModel {
     this._elements.containers.phoneField.classList.remove('sad--invalid');
     this._elements.containers.submit.classList.remove('sad--invalid');
 
-    if (this._elements.fields.agency && this._elements.fields.agency.classList) {
-      this._elements.fields.agency.classList.remove('sad--invalid');
+    if (this._elements.fields.provider && this._elements.fields.provider.classList) {
+      this._elements.fields.provider.classList.remove('sad--invalid');
     }
 
     this._elements.errors.lastName.innerText = '';
@@ -253,9 +258,9 @@ class SadLeadFormModel {
     }
   }
 
-  _validateAgency() {
-    if (this._model.agency === '') {
-      this._elements.fields.agency.classList.add('sad--invalid');
+  _validateProvider() {
+    if (this._model.provider === '') {
+      this._elements.fields.provider.classList.add('sad--invalid');
       this._isValid = false;
     }
   }
@@ -396,7 +401,7 @@ class SadLeadFormModel {
         lastName: document.getElementById('js-sad-lead-form-field-lastname'),
         firstName: document.getElementById('js-sad-lead-form-field-first-name'),
         rgpd: document.getElementById('js-sad-lead-form-field-rgpd'),
-        agency: document.getElementById('js-sad-lead-form-field-agency'),
+        provider: document.getElementById('js-sad-lead-form-field-provider'),
       },
       extraFields: {
         additionalInformation: document.querySelectorAll(

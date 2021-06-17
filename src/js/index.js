@@ -39,5 +39,8 @@ new SadLeadFormApp({
   callback: callBackFunction,
   distributorCode: 'XXXXXXXXXXX',
   agencyCode: 'XXXXXXXXXXX',
-  agencies: [{code: 'code1', name: 'Name1'}, {code: 'code2', name: 'Name2'}]
+  providerConfig: {
+    type: 'agency',
+    selections: [{code: 'code1', name: 'Name1'}, {code: 'code2', name: 'Name2'}]
+  }
 });
