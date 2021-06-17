@@ -223,7 +223,6 @@ class SadLeadFormModel {
 
   _cleanErrors() {
     this._elements.fields.iAm.classList.remove('sad--invalid');
-    this._elements.fields.agency.classList.remove('sad--invalid');
     this._elements.fields.lastName.classList.remove('sad--invalid');
     this._elements.fields.firstName.classList.remove('sad--invalid');
     this._elements.containers.rgpd.classList.remove('sad--invalid');
@@ -235,6 +234,10 @@ class SadLeadFormModel {
     this._elements.containers.addressField.classList.remove('sad--invalid');
     this._elements.containers.phoneField.classList.remove('sad--invalid');
     this._elements.containers.submit.classList.remove('sad--invalid');
+
+    if (this._elements.fields.agency && this._elements.fields.agency.classList) {
+      this._elements.fields.agency.classList.remove('sad--invalid');
+    }
 
     this._elements.errors.lastName.innerText = '';
     this._elements.errors.firstName.innerText = '';
