@@ -823,11 +823,6 @@ var SadLeadFormApp = function SadLeadFormApp(config) {
     return;
   }
 
-  if (config.hasOwnProperty('providerConfig') && !config.providerConfig.hasOwnProperty('type')) {
-    document.querySelector(config.htmlSelector).innerHTML = "Le type de provider est requis…";
-    return;
-  }
-
   this._sadLeadFormTemplate = new _sadLeadFormTemplate.default(config.rgpdDescription, config.providerConfig);
   document.querySelector(config.htmlSelector).innerHTML = this._sadLeadFormTemplate.getApplicationTemplate();
   var params = {
