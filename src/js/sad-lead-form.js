@@ -43,14 +43,13 @@ class SadLeadFormModel {
     const formattedModel = JSON.parse(JSON.stringify(this._model));
 
     formattedModel.distributor = this._distributorCode;
+    formattedModel.agency = this._agencyCode;
 
     if (this._providerConfig) {
       formattedModel.provider = {
         type: this._providerConfig.type,
         code: formattedModel.provider
       };
-    } else {
-      formattedModel.agency = this._agencyCode;
     }
 
     formattedModel.tags = ['Site Web Distributeur', 'No_vendor'];
