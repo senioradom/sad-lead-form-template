@@ -1,7 +1,8 @@
 class SadLeadFormTemplate {
-  constructor(rgpdDescription, providerConfig) {
+  constructor(rgpdDescription, providerConfig, sourceConfig) {
     this._rgpdDescription = rgpdDescription;
     this._providerSelectorTemplate = this.getProviderTemplate(providerConfig);
+    this._campaignsSelectorTemplate = this.getCampaignsTemplate(sourceConfig);
   }
 
   getProviderTemplate(providerConfig) {
@@ -18,6 +19,30 @@ class SadLeadFormTemplate {
     <div class="sad-lead-form-control" id="js-sad-lead-form-field-provider">
             <label class="sad-lead-form-label"><span class="sad-lead-form-text-inline">Point de vente<sup>*</sup></span></label>
             <select name="provider" class="sad-lead-form-select">
+                <option selected value="">-</option>
+                ${options}
+            </select>
+
+            <div class="sad-lead-form-error">
+                Ce champ est obligatoire.
+            </div>
+        </div>`;
+  }
+
+  getCampaignsTemplate(sourceConfig) {
+    if (!sourceConfig) {
+      return ``;
+    }
+
+    let options = '';
+    for (const campaign of sourceConfig.campaigns) {
+      options += `<option value="${campaign.code}">${campaign.name}</option>`
+    }
+
+    return `
+    <div class="sad-lead-form-control" id="js-sad-lead-form-field-provider">
+            <label class="sad-lead-form-label"><span class="sad-lead-form-text-inline">Campagne<sup>*</sup></span></label>
+            <select name="campaign" class="sad-lead-form-select">
                 <option selected value="">-</option>
                 ${options}
             </select>
@@ -167,9 +192,14 @@ class SadLeadFormTemplate {
         </div>
 
         <!-- ------------------
-         Agence : applicant.lastname
+         Provider
         ------------------- -->
         ${this._providerSelectorTemplate}
+
+        <!-- ------------------
+         Campaign
+        ------------------- -->
+        ${this._campaignsSelectorTemplate}
     </div>
 
     <div class="sad-lead-form__column sad-lead-form__column--full">

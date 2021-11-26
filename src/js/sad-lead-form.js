@@ -11,6 +11,7 @@ class SadLeadFormModel {
     this._distributorCode = config.distributorCode;
     this._agencyCode = config.agencyCode;
     this._providerConfig = config.providerConfig;
+    this._sourceConfig = config.sourceConfig;
 
     this._callback = config.callback;
 
@@ -50,6 +51,10 @@ class SadLeadFormModel {
         type: this._providerConfig.type,
         code: formattedModel.provider
       };
+    }
+
+    if (this._sourceConfig) {
+      formattedModel.source = this._sourceConfig.sourceCode;
     }
 
     formattedModel.tags = ['Site Web Distributeur', 'No_vendor'];
@@ -125,6 +130,10 @@ class SadLeadFormModel {
 
     if (this._providerConfig) {
       this._validateProvider();
+    }
+
+    if (this._sourceConfig) {
+      this._validateCampaign();
     }
 
     this._validateLastName();
@@ -243,6 +252,10 @@ class SadLeadFormModel {
       this._elements.fields.provider.classList.remove('sad--invalid');
     }
 
+    if (this._elements.fields.campaign && this._elements.fields.campaign.classList) {
+      this._elements.fields.campaign.classList.remove('sad--invalid');
+    }
+
     this._elements.errors.lastName.innerText = '';
     this._elements.errors.firstName.innerText = '';
     this._elements.errors.phoneNumber.innerText = '';
@@ -263,6 +276,15 @@ class SadLeadFormModel {
       this._isValid = false;
     }
   }
+
+  _validateCampaign() {
+    if (this._model.campaign === '') {
+      this._elements.fields.campaign.classList.add('sad--invalid');
+      this._isValid = false;
+    }
+  }
+
+
 
   _validateLastName() {
     if (this._model.applicant.lastname === '') {
@@ -401,6 +423,7 @@ class SadLeadFormModel {
         firstName: document.getElementById('js-sad-lead-form-field-first-name'),
         rgpd: document.getElementById('js-sad-lead-form-field-rgpd'),
         provider: document.getElementById('js-sad-lead-form-field-provider'),
+        campaign: document.getElementById('js-sad-lead-form-field-campaign'),
       },
       extraFields: {
         additionalInformation: document.querySelectorAll(
