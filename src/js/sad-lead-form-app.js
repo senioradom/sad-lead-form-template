@@ -30,7 +30,11 @@ class SadLeadFormApp {
       return;
     }
 
-    this._sadLeadFormTemplate = new SadLeadFormTemplate(config.rgpdDescription, config.providerConfig, config.sourceConfig);
+    this._sadLeadFormTemplate = new SadLeadFormTemplate(
+      config.rgpdDescription,
+      config.providerConfig,
+      config.sourceConfig
+    );
     document.querySelector(config.htmlSelector).innerHTML = this._sadLeadFormTemplate.getApplicationTemplate();
 
     const params = {
@@ -38,7 +42,7 @@ class SadLeadFormApp {
       agencyCode: config.agencyCode,
       providerConfig: config.providerConfig,
       sourceConfig: config.sourceConfig,
-      callback: config.callback
+      callback: config.callback,
     };
 
     new SadLeadFormModel(params);

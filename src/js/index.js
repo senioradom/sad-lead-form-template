@@ -41,10 +41,13 @@ new SadLeadFormApp({
   agencyCode: 'XXXXXXXXXXX',
   providerConfig: {
     type: 'agency',
-    selections: [{code: 'code1', name: 'Name1'}, {code: 'code2', name: 'Name2'}]
+    selections: [
+      { code: 'code1', name: 'Name1' },
+      { code: 'code2', name: 'Name2' },
+    ],
   },
   sourceConfig: {
     sourceCode: 'XXXXXXXXXXX',
-    campaigns: [{code: 'code1', name: 'Name1'}]
-  }
+    campaigns: [{ code: 'code1', name: 'Name1' }],
+  },
 });

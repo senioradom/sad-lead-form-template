@@ -49,7 +49,7 @@ class SadLeadFormModel {
     if (this._providerConfig) {
       formattedModel.provider = {
         type: this._providerConfig.type,
-        code: formattedModel.provider
+        code: formattedModel.provider,
       };
     }
 
@@ -283,8 +283,6 @@ class SadLeadFormModel {
       this._isValid = false;
     }
   }
-
-
 
   _validateLastName() {
     if (this._model.applicant.lastname === '') {

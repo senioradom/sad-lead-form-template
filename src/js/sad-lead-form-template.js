@@ -11,9 +11,9 @@ class SadLeadFormTemplate {
     }
 
     let options = '';
-    for (const provider of providerConfig.selections) {
-      options += `<option value="${provider.code}">${provider.name}</option>`
-    }
+    providerConfig.selections.forEach((provider) => {
+      options += `<option value="${provider.code}">${provider.name}</option>`;
+    });
 
     return `
     <div class="sad-lead-form-control" id="js-sad-lead-form-field-provider">
@@ -35,12 +35,12 @@ class SadLeadFormTemplate {
     }
 
     let options = '';
-    for (const campaign of sourceConfig.campaigns) {
-      options += `<option value="${campaign.code}">${campaign.name}</option>`
-    }
+    sourceConfig.campaigns.forEach((campaign) => {
+      options += `<option value="${campaign.code}">${campaign.name}</option>`;
+    });
 
     return `
-    <div class="sad-lead-form-control" id="js-sad-lead-form-field-provider">
+    <div class="sad-lead-form-control" id="js-sad-lead-form-field-campaign">
             <label class="sad-lead-form-label"><span class="sad-lead-form-text-inline">Campagne<sup>*</sup></span></label>
             <select name="campaign" class="sad-lead-form-select">
                 <option selected value="">-</option>
