@@ -289,7 +289,7 @@ class SadLeadFormModel {
       this._elements.fields.lastName.classList.add('sad--invalid');
       this._elements.errors.lastName.innerText = 'Ce champ est obligatoire.';
       this._isValid = false;
-    } else if (!this._sadLeadFormValidator.validateStringWithoutSpecialCharacters(this._model.applicant.lastname)) {
+    } else if (!this._sadLeadFormValidator.isStringWithoutSpecialCharacters(this._model.applicant.lastname)) {
       this._elements.fields.lastName.classList.add('sad--invalid');
       this._elements.errors.lastName.innerText = 'Ce champ est obligatoire.';
 
@@ -304,7 +304,7 @@ class SadLeadFormModel {
       this._elements.fields.firstName.classList.add('sad--invalid');
       this._elements.errors.firstName.innerText = 'Ce champ est obligatoire.';
       this._isValid = false;
-    } else if (!this._sadLeadFormValidator.validateStringWithoutSpecialCharacters(this._model.applicant.firstname)) {
+    } else if (!this._sadLeadFormValidator.isStringWithoutSpecialCharacters(this._model.applicant.firstname)) {
       this._elements.fields.firstName.classList.add('sad--invalid');
       this._elements.errors.firstName.innerText = 'Ce champ est obligatoire.';
 
@@ -345,7 +345,7 @@ class SadLeadFormModel {
       this._isValid = false;
     } else if (
       this._elements.toggle.email.checked &&
-      !this._sadLeadFormValidator.validateEmail(this._model.applicant.email)
+      !this._sadLeadFormValidator.isEmailValid(this._model.applicant.email)
     ) {
       this._elements.containers.media.classList.add('sad--invalid');
       this._elements.containers.email.classList.add('sad--invalid');
@@ -391,7 +391,7 @@ class SadLeadFormModel {
       this._isValid = false;
     } else if (
       this._elements.toggle.phone.checked &&
-      !this._sadLeadFormValidator.validateFrenchPhoneNumber(this._model.applicant.phoneNumber)
+      !this._sadLeadFormValidator.isFrenchPhoneNumberValid(this._model.applicant.phoneNumber)
     ) {
       this._elements.containers.media.classList.add('sad--invalid');
       this._elements.containers.phone.classList.add('sad--invalid');
