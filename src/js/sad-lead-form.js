@@ -358,28 +358,26 @@ class SadLeadFormModel {
   }
 
   _validateAddress() {
-    if (
-      this._elements.toggle.address.checked &&
-      ((this._model.applicant.address.l2 === '' &&
-        this._model.applicant.address.l3 === '' &&
-        this._model.applicant.address.l4 === '') ||
-        this._model.applicant.address.zipcode === '' ||
-        this._model.applicant.address.city === '')
-    ) {
+    const isChecked = this._elements.toggle.address.checked;
+    if (!isChecked) {
+      return;
+    }
+
+    const addInvalidClasses = () => {
       this._elements.containers.media.classList.add('sad--invalid');
       this._elements.containers.address.classList.add('sad--invalid');
       this._elements.containers.addressField.classList.add('sad--invalid');
+    };
+
+    if (!this._sadLeadFormValidator.isAddressValid(this._model.applicant.address)) {
+      addInvalidClasses();
       this._isValid = false;
-    } else if (
-      this._elements.toggle.address.checked &&
-      !this._sadLeadFormValidator.validateFrenchZipCode(this._model.applicant.address.zipcode)
-    ) {
-      this._elements.containers.media.classList.add('sad--invalid');
-      this._elements.containers.address.classList.add('sad--invalid');
-      this._elements.containers.addressField.classList.add('sad--invalid');
+      return;
+    }
 
+    if (!this._sadLeadFormValidator.isFrenchZipCodeValid(this._model.applicant.address.zipcode)) {
+      addInvalidClasses();
       this._elements.errors.zipCode.innerText = 'Ce code postal n’est pas un code postal français valide.';
-
       this._isValid = false;
     }
   }
