@@ -174,9 +174,9 @@ class SadLeadFormTemplate {
             <label class="sad-lead-form-control__label" for="js-sad-lead-form-address-toggle">Recevoir de la documentation par courrier</label>
         </div>
         <div class="sad-lead-form-control sad--hidden" data-sad-lead-form-conditional-display-target="applicant.address">
-            <input class="sad-lead-form-input sad--hidden sad-uppercase" data-sad-lead-form-conditional-display-target="applicant.address" name="applicant.address.l2" placeholder="Appt / Esc / Etage" type="text" autocorrect="off">
-            <input class="sad-lead-form-input sad--hidden sad-uppercase" data-sad-lead-form-conditional-display-target="applicant.address" name="applicant.address.l3" placeholder="Bâtiment/Résidence" type="text" autocorrect="off">
-            <input class="sad-lead-form-input sad--hidden sad-uppercase" data-sad-lead-form-conditional-display-target="applicant.address" name="applicant.address.l4" placeholder="Adresse" type="text" autocorrect="off" autocomplete="address-line1">
+            <input class="sad-lead-form-input sad--hidden sad-uppercase" data-sad-lead-form-conditional-display-target="applicant.address" maxlength="38" name="applicant.address.l2" placeholder="Appt / Esc / Etage" type="text" autocorrect="off">
+            <input class="sad-lead-form-input sad--hidden sad-uppercase" data-sad-lead-form-conditional-display-target="applicant.address" maxlength="38" name="applicant.address.l3" placeholder="Bâtiment/Résidence" type="text" autocorrect="off">
+            <input class="sad-lead-form-input sad--hidden sad-uppercase" data-sad-lead-form-conditional-display-target="applicant.address" maxlength="38" name="applicant.address.l4" placeholder="Adresse" type="text" autocorrect="off" autocomplete="address-line1">
 
             <div class="sad-lead-form-flex__container">
                 <div class="sad-lead-form-flex__element sad-lead-form-width-382pc">
