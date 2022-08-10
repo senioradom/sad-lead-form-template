@@ -125,12 +125,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -154,21 +148,9 @@ var SadLeadFormTemplate = /*#__PURE__*/function () {
       }
 
       var options = '';
-
-      var _iterator = _createForOfIteratorHelper(providerConfig.selections),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var provider = _step.value;
-          options += "<option value=\"".concat(provider.code, "\">").concat(provider.name, "</option>");
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-
+      providerConfig.selections.forEach(function (provider) {
+        options += "<option value=\"".concat(provider.code, "\">").concat(provider.name, "</option>");
+      });
       return "\n    <div class=\"sad-lead-form-control\" id=\"js-sad-lead-form-field-provider\">\n            <label class=\"sad-lead-form-label\"><span class=\"sad-lead-form-text-inline\">Point de vente<sup>*</sup></span></label>\n            <select name=\"provider\" class=\"sad-lead-form-select\">\n                <option selected value=\"\">-</option>\n                ".concat(options, "\n            </select>\n\n            <div class=\"sad-lead-form-error\">\n                Ce champ est obligatoire.\n            </div>\n        </div>");
     }
   }, {
@@ -179,27 +161,15 @@ var SadLeadFormTemplate = /*#__PURE__*/function () {
       }
 
       var options = '';
-
-      var _iterator2 = _createForOfIteratorHelper(sourceConfig.campaigns),
-          _step2;
-
-      try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var campaign = _step2.value;
-          options += "<option value=\"".concat(campaign.code, "\">").concat(campaign.name, "</option>");
-        }
-      } catch (err) {
-        _iterator2.e(err);
-      } finally {
-        _iterator2.f();
-      }
-
-      return "\n    <div class=\"sad-lead-form-control\" id=\"js-sad-lead-form-field-provider\">\n            <label class=\"sad-lead-form-label\"><span class=\"sad-lead-form-text-inline\">Campagne<sup>*</sup></span></label>\n            <select name=\"campaign\" class=\"sad-lead-form-select\">\n                <option selected value=\"\">-</option>\n                ".concat(options, "\n            </select>\n\n            <div class=\"sad-lead-form-error\">\n                Ce champ est obligatoire.\n            </div>\n        </div>");
+      sourceConfig.campaigns.forEach(function (campaign) {
+        options += "<option value=\"".concat(campaign.code, "\">").concat(campaign.name, "</option>");
+      });
+      return "\n    <div class=\"sad-lead-form-control\" id=\"js-sad-lead-form-field-campaign\">\n            <label class=\"sad-lead-form-label\"><span class=\"sad-lead-form-text-inline\">Campagne<sup>*</sup></span></label>\n            <select name=\"campaign\" class=\"sad-lead-form-select\">\n                <option selected value=\"\">-</option>\n                ".concat(options, "\n            </select>\n\n            <div class=\"sad-lead-form-error\">\n                Ce champ est obligatoire.\n            </div>\n        </div>");
     }
   }, {
     key: "getApplicationTemplate",
     value: function getApplicationTemplate() {
-      return "\n<form action=\"#\" class=\"sad-lead-form\" id=\"js-sad-lead-form\">\n    <!-- ------------------\n     Left column\n    ------------------- -->\n    <div class=\"sad-lead-form__column sad-lead-form__column--half\">\n        <!-- ------------------\n         Je suis : applicant.lastname\n        ------------------- -->\n        <div class=\"sad-lead-form-control\" id=\"js-sad-lead-form-field-i-am\">\n            <label class=\"sad-lead-form-label\"><span class=\"sad-lead-form-text-inline\">Je suis<sup>*</sup></span></label>\n            <select name=\"applicant.gender\" class=\"sad-lead-form-select\">\n                <option selected value=\"\">-</option>\n                <option value=\"M\">M.</option>\n                <option value=\"F\">Mme</option>\n            </select>\n\n            <div class=\"sad-lead-form-error\">\n                Ce champ est obligatoire.\n            </div>\n        </div>\n\n        <!-- ------------------\n         Nom : applicant.lastname\n        ------------------- -->\n        <div class=\"sad-lead-form-control\" id=\"js-sad-lead-form-field-lastname\">\n            <label class=\"sad-lead-form-label\" for=\"applicant-lastname\"><span class=\"sad-lead-form-text-inline\">Nom<sup>*</sup></span></label>\n            <input class=\"sad-lead-form-input\" id=\"applicant-lastname\" name=\"applicant.lastname\" type=\"text\" autocorrect=\"off\" autocomplete=\"family-name\" placeholder=\"Nom\">\n\n            <div class=\"sad-lead-form-error\" id=\"js-sad-lead-form-field-lastname-error-message\">\n                Ce champ est obligatoire.\n            </div>\n        </div>\n\n        <!-- ------------------\n         Pr\xE9nom : applicant.lastname\n        ------------------- -->\n        <div class=\"sad-lead-form-control\" id=\"js-sad-lead-form-field-first-name\">\n            <label class=\"sad-lead-form-label\" for=\"applicant-firstname\"><span class=\"sad-lead-form-text-inline\">Pr\xE9nom<sup>*</sup></span></label>\n            <input class=\"sad-lead-form-input\" id=\"applicant-firstname\" name=\"applicant.firstname\" type=\"text\" autocorrect=\"off\" autocomplete=\"family-name\" placeholder=\"Pr\xE9nom\">\n\n            <div class=\"sad-lead-form-error\" id=\"js-sad-lead-form-field-firstname-error-message\">\n                Ce champ est obligatoire.\n            </div>\n        </div>\n\n        <!-- ------------------\n         Je souhaite des informations : applicant.relation\n        ------------------- -->\n        <div class=\"sad-lead-form-control\">\n            <label for=\"applicant-relation\" class=\"sad-lead-form-label\">Je souhaite des informations</label>\n            <select id=\"applicant-relation\" name=\"applicant.relation\" class=\"sad-lead-form-select\">\n                <option value=\"himself\" selected>Pour moi</option>\n                <option value=\"other\">Pour un proche</option>\n            </select>\n        </div>\n    </div>\n\n    <!-- ------------------\n     Right column\n    ------------------- -->\n    <div class=\"sad-lead-form__column sad-lead-form__column--half\">\n\n        <div class=\"sad-lead-form-control\" id=\"js-sad-lead-form-field-media\">\n            <label class=\"sad-lead-form-label\">\n                Je souhaite&nbsp;:\n            </label>\n\n            <div class=\"sad-lead-form-error\">\n                Merci de renseigner au moins un num\xE9ro de t\xE9l\xE9phone ou une adresse mail\n            </div>\n        </div>\n\n        <!-- ------------------\n         Phone : applicant.phoneNumber\n        ------------------- -->\n        <div class=\"sad-lead-form-control\" id=\"js-sad-lead-form-field-phone\">\n            <input class=\"sad-lead-form-control__input\" id=\"js-sad-lead-form-phone-toggle\" type=\"checkbox\" data-sad-lead-form-conditional-display-toggle=\"applicant.phoneNumber\">\n            <label class=\"sad-lead-form-control__label\" for=\"js-sad-lead-form-phone-toggle\">\xCAtre rappel\xE9</label>\n        </div>\n        <div class=\"sad-lead-form-control sad--hidden\" data-sad-lead-form-conditional-display-target=\"applicant.phoneNumber\">\n            <input class=\"sad-lead-form-input sad--hidden\" data-sad-lead-form-conditional-display-target=\"applicant.phoneNumber\" name=\"applicant.phoneNumber\" placeholder=\"Saisissez votre num\xE9ro de t\xE9l\xE9phone \" type=\"number\" autocorrect=\"off\" autocomplete=\"tel\">\n\n            <div class=\"sad-lead-form-error\" id=\"js-sad-lead-form-field-phone-error-message\"></div>\n        </div>\n\n        <!-- ------------------\n         Je suis disponible : additionalInformation\n        ------------------- -->\n        <div class=\"sad-lead-form-control sad--hidden\" data-sad-lead-form-conditional-display-target=\"applicant.phoneNumber\">\n            <label class=\"sad-lead-form-label\">Je suis disponible</label>\n            <select class=\"sad-lead-form-select\" data-sad-lead-form-conditional-display-target=\"applicant.phoneNumber\" data-sad-lead-form-field-name-additional-information-as-array>\n                <option selected value=\"\">-</option>\n                <option value=\"Le matin\">Le matin</option>\n                <option value=\"L\u2019apr\xE8s-midi\">L\u2019apr\xE8s-midi</option>\n                <option value=\"Toute la journ\xE9e\">Toute la journ\xE9e</option>\n            </select>\n        </div>\n\n        <!-- ------------------\n         E-mail : applicant.email\n        ------------------- -->\n        <div class=\"sad-lead-form-control\" id=\"js-sad-lead-form-field-email\">\n            <input class=\"sad-lead-form-control__input\" id=\"js-sad-lead-form-email-toggle\" type=\"checkbox\" data-sad-lead-form-conditional-display-toggle=\"applicant.email\">\n            <label class=\"sad-lead-form-control__label\" for=\"js-sad-lead-form-email-toggle\">Recevoir de la documentation par E-mail</label>\n        </div>\n        <div class=\"sad-lead-form-control sad--hidden\" data-sad-lead-form-conditional-display-target=\"applicant.email\">\n            <input class=\"sad-lead-form-input sad--hidden\" data-sad-lead-form-conditional-display-target=\"applicant.email\" name=\"applicant.email\" type=\"email\" autocapitalize=\"off\" autocorrect=\"off\" autocomplete=\"email\" placeholder=\"Saisissez votre adresse e-mail\">\n\n            <div class=\"sad-lead-form-error\" id=\"js-sad-lead-form-field-email-error-message\"></div>\n        </div>\n\n        <!-- ------------------\n         Address : applicant.address.xxx\n        ------------------- -->\n        <div class=\"sad-lead-form-control\" id=\"js-sad-lead-form-field-address\">\n            <input class=\"sad-lead-form-control__input\" id=\"js-sad-lead-form-address-toggle\" type=\"checkbox\" data-sad-lead-form-conditional-display-toggle=\"applicant.address\">\n            <label class=\"sad-lead-form-control__label\" for=\"js-sad-lead-form-address-toggle\">Recevoir de la documentation par courrier</label>\n        </div>\n        <div class=\"sad-lead-form-control sad--hidden\" data-sad-lead-form-conditional-display-target=\"applicant.address\">\n            <input class=\"sad-lead-form-input sad--hidden sad-uppercase\" data-sad-lead-form-conditional-display-target=\"applicant.address\" name=\"applicant.address.l2\" placeholder=\"Appt / Esc / Etage\" type=\"text\" autocorrect=\"off\">\n            <input class=\"sad-lead-form-input sad--hidden sad-uppercase\" data-sad-lead-form-conditional-display-target=\"applicant.address\" name=\"applicant.address.l3\" placeholder=\"B\xE2timent/R\xE9sidence\" type=\"text\" autocorrect=\"off\">\n            <input class=\"sad-lead-form-input sad--hidden sad-uppercase\" data-sad-lead-form-conditional-display-target=\"applicant.address\" name=\"applicant.address.l4\" placeholder=\"Adresse\" type=\"text\" autocorrect=\"off\" autocomplete=\"address-line1\">\n\n            <div class=\"sad-lead-form-flex__container\">\n                <div class=\"sad-lead-form-flex__element sad-lead-form-width-382pc\">\n                    <input class=\"sad-lead-form-input sad--hidden sad-uppercase\" data-sad-lead-form-conditional-display-target=\"applicant.address\" name=\"applicant.address.zipcode\" placeholder=\"Code Postal\" type=\"text\" pattern=\"\\d*\" novalidate autocorrect=\"off\" autocomplete=\"postal-code\">\n                </div>\n\n                <div class=\"sad-lead-form-flex__element sad-lead-form-width-flex-grow-1\">\n                    <input class=\"sad-lead-form-input sad--hidden sad-uppercase\" data-sad-lead-form-conditional-display-target=\"applicant.address\" name=\"applicant.address.city\" placeholder=\"Ville\" type=\"text\" autocorrect=\"off\" autocomplete=\"address-level2\">\n                </div>\n            </div>\n\n             <div class=\"sad-lead-form-error\" id=\"js-sad-lead-form-field-zipcode-error-message\"></div>\n        </div>\n\n        <!-- ------------------\n         Provider\n        ------------------- -->\n        ".concat(this._providerSelectorTemplate, "\n\n        <!-- ------------------\n         Campaign\n        ------------------- -->\n        ").concat(this._campaignsSelectorTemplate, "\n    </div>\n\n    <div class=\"sad-lead-form__column sad-lead-form__column--full\">\n        <!-- ------------------\n         Informations compl\xE9mentaires : additionalInformation\n        ------------------- -->\n        <div class=\"sad-lead-form-control\">\n            <label class=\"sad-lead-form-label\" for=\"additionalInformation-line2\">Informations compl\xE9mentaires :</label>\n            <textarea class=\"sad-lead-form-input\" id=\"additionalInformation-line2\" rows=\"8\" cols=\"40\" data-sad-lead-form-field-name-additional-information-as-array></textarea>\n        </div>\n\n        <div class=\"sad-lead-form-control\">\n            <em><small><sup>*</sup> Mentions obligatoires</small></em>\n        </div>\n\n        <!-- ------------------\n         RGPD\n        ------------------- -->\n        <div class=\"sad-lead-form-control\" id=\"js-sad-lead-form-field-rgpd-container\">\n            <input class=\"sad-lead-form-control__input\" id=\"js-sad-lead-form-field-rgpd\" type=\"checkbox\">\n            <label class=\"sad-lead-form-control__label\" for=\"js-sad-lead-form-field-rgpd\">\n                <small>").concat(this._rgpdDescription, "</small>\n            </label>\n\n            <div class=\"sad-lead-form-error sad-pt-8\">\n                Autorisation obligatoire.\n            </div>\n        </div>\n    </div>\n\n    <div class=\"sad-lead-form__column sad-lead-form__column--half\">\n        <div class=\"sad-lead-form__submit-container\">\n            <!-- ------------------\n             Envoyer\n            ------------------- -->\n            <div class=\"sad-lead-form-text-center\" id=\"js-sad-lead-form-field-submit\">\n                <button type=\"submit\" class=\"sad-lead-form-button sad-lead-form__submit-button sad-lead-form-button--dark\" id=\"js-sad-lead-form-button-submit\">Envoyer</button>\n\n                <div class=\"sad-lead-form-error sad-pt-8\">\n                    Merci de compl\xE9ter les informations manquantes.\n                </div>\n            </div>\n        </div>\n    </div>\n</form>");
+      return "\n<form action=\"#\" class=\"sad-lead-form\" id=\"js-sad-lead-form\">\n    <!-- ------------------\n     Left column\n    ------------------- -->\n    <div class=\"sad-lead-form__column sad-lead-form__column--half\">\n        <!-- ------------------\n         Je suis : applicant.lastname\n        ------------------- -->\n        <div class=\"sad-lead-form-control\" id=\"js-sad-lead-form-field-i-am\">\n            <label class=\"sad-lead-form-label\"><span class=\"sad-lead-form-text-inline\">Je suis<sup>*</sup></span></label>\n            <select name=\"applicant.gender\" class=\"sad-lead-form-select\">\n                <option selected value=\"\">-</option>\n                <option value=\"M\">M.</option>\n                <option value=\"F\">Mme</option>\n            </select>\n\n            <div class=\"sad-lead-form-error\">\n                Ce champ est obligatoire.\n            </div>\n        </div>\n\n        <!-- ------------------\n         Nom : applicant.lastname\n        ------------------- -->\n        <div class=\"sad-lead-form-control\" id=\"js-sad-lead-form-field-lastname\">\n            <label class=\"sad-lead-form-label\" for=\"applicant-lastname\"><span class=\"sad-lead-form-text-inline\">Nom<sup>*</sup></span></label>\n            <input class=\"sad-lead-form-input\" id=\"applicant-lastname\" name=\"applicant.lastname\" type=\"text\" autocorrect=\"off\" autocomplete=\"family-name\" placeholder=\"Nom\">\n\n            <div class=\"sad-lead-form-error\" id=\"js-sad-lead-form-field-lastname-error-message\">\n                Ce champ est obligatoire.\n            </div>\n        </div>\n\n        <!-- ------------------\n         Pr\xE9nom : applicant.lastname\n        ------------------- -->\n        <div class=\"sad-lead-form-control\" id=\"js-sad-lead-form-field-first-name\">\n            <label class=\"sad-lead-form-label\" for=\"applicant-firstname\"><span class=\"sad-lead-form-text-inline\">Pr\xE9nom<sup>*</sup></span></label>\n            <input class=\"sad-lead-form-input\" id=\"applicant-firstname\" name=\"applicant.firstname\" type=\"text\" autocorrect=\"off\" autocomplete=\"family-name\" placeholder=\"Pr\xE9nom\">\n\n            <div class=\"sad-lead-form-error\" id=\"js-sad-lead-form-field-firstname-error-message\">\n                Ce champ est obligatoire.\n            </div>\n        </div>\n\n        <!-- ------------------\n         Je souhaite des informations : applicant.relation\n        ------------------- -->\n        <div class=\"sad-lead-form-control\">\n            <label for=\"applicant-relation\" class=\"sad-lead-form-label\">Je souhaite des informations</label>\n            <select id=\"applicant-relation\" name=\"applicant.relation\" class=\"sad-lead-form-select\">\n                <option value=\"himself\" selected>Pour moi</option>\n                <option value=\"other\">Pour un proche</option>\n            </select>\n        </div>\n    </div>\n\n    <!-- ------------------\n     Right column\n    ------------------- -->\n    <div class=\"sad-lead-form__column sad-lead-form__column--half\">\n\n        <div class=\"sad-lead-form-control\" id=\"js-sad-lead-form-field-media\">\n            <label class=\"sad-lead-form-label\">\n                Je souhaite&nbsp;:\n            </label>\n\n            <div class=\"sad-lead-form-error\">\n                Merci de renseigner au moins un num\xE9ro de t\xE9l\xE9phone ou une adresse mail\n            </div>\n        </div>\n\n        <!-- ------------------\n         Phone : applicant.phoneNumber\n        ------------------- -->\n        <div class=\"sad-lead-form-control\" id=\"js-sad-lead-form-field-phone\">\n            <input class=\"sad-lead-form-control__input\" id=\"js-sad-lead-form-phone-toggle\" type=\"checkbox\" data-sad-lead-form-conditional-display-toggle=\"applicant.phoneNumber\">\n            <label class=\"sad-lead-form-control__label\" for=\"js-sad-lead-form-phone-toggle\">\xCAtre rappel\xE9</label>\n        </div>\n        <div class=\"sad-lead-form-control sad--hidden\" data-sad-lead-form-conditional-display-target=\"applicant.phoneNumber\">\n            <input class=\"sad-lead-form-input sad--hidden\" data-sad-lead-form-conditional-display-target=\"applicant.phoneNumber\" name=\"applicant.phoneNumber\" placeholder=\"Saisissez votre num\xE9ro de t\xE9l\xE9phone \" type=\"number\" autocorrect=\"off\" autocomplete=\"tel\">\n\n            <div class=\"sad-lead-form-error\" id=\"js-sad-lead-form-field-phone-error-message\"></div>\n        </div>\n\n        <!-- ------------------\n         Je suis disponible : additionalInformation\n        ------------------- -->\n        <div class=\"sad-lead-form-control sad--hidden\" data-sad-lead-form-conditional-display-target=\"applicant.phoneNumber\">\n            <label class=\"sad-lead-form-label\">Je suis disponible</label>\n            <select class=\"sad-lead-form-select\" data-sad-lead-form-conditional-display-target=\"applicant.phoneNumber\" data-sad-lead-form-field-name-additional-information-as-array>\n                <option selected value=\"\">-</option>\n                <option value=\"Le matin\">Le matin</option>\n                <option value=\"L\u2019apr\xE8s-midi\">L\u2019apr\xE8s-midi</option>\n                <option value=\"Toute la journ\xE9e\">Toute la journ\xE9e</option>\n            </select>\n        </div>\n\n        <!-- ------------------\n         E-mail : applicant.email\n        ------------------- -->\n        <div class=\"sad-lead-form-control\" id=\"js-sad-lead-form-field-email\">\n            <input class=\"sad-lead-form-control__input\" id=\"js-sad-lead-form-email-toggle\" type=\"checkbox\" data-sad-lead-form-conditional-display-toggle=\"applicant.email\">\n            <label class=\"sad-lead-form-control__label\" for=\"js-sad-lead-form-email-toggle\">Recevoir de la documentation par E-mail</label>\n        </div>\n        <div class=\"sad-lead-form-control sad--hidden\" data-sad-lead-form-conditional-display-target=\"applicant.email\">\n            <input class=\"sad-lead-form-input sad--hidden\" data-sad-lead-form-conditional-display-target=\"applicant.email\" name=\"applicant.email\" type=\"email\" autocapitalize=\"off\" autocorrect=\"off\" autocomplete=\"email\" placeholder=\"Saisissez votre adresse e-mail\">\n\n            <div class=\"sad-lead-form-error\" id=\"js-sad-lead-form-field-email-error-message\"></div>\n        </div>\n\n        <!-- ------------------\n         Address : applicant.address.xxx\n        ------------------- -->\n        <div class=\"sad-lead-form-control\" id=\"js-sad-lead-form-field-address\">\n            <input class=\"sad-lead-form-control__input\" id=\"js-sad-lead-form-address-toggle\" type=\"checkbox\" data-sad-lead-form-conditional-display-toggle=\"applicant.address\">\n            <label class=\"sad-lead-form-control__label\" for=\"js-sad-lead-form-address-toggle\">Recevoir de la documentation par courrier</label>\n        </div>\n        <div class=\"sad-lead-form-control sad--hidden\" data-sad-lead-form-conditional-display-target=\"applicant.address\">\n            <input class=\"sad-lead-form-input sad--hidden sad-uppercase\" data-sad-lead-form-conditional-display-target=\"applicant.address\" maxlength=\"38\" name=\"applicant.address.l2\" placeholder=\"Appt / Esc / Etage\" type=\"text\" autocorrect=\"off\">\n            <input class=\"sad-lead-form-input sad--hidden sad-uppercase\" data-sad-lead-form-conditional-display-target=\"applicant.address\" maxlength=\"38\" name=\"applicant.address.l3\" placeholder=\"B\xE2timent/R\xE9sidence\" type=\"text\" autocorrect=\"off\">\n            <input class=\"sad-lead-form-input sad--hidden sad-uppercase\" data-sad-lead-form-conditional-display-target=\"applicant.address\" maxlength=\"38\" name=\"applicant.address.l4\" placeholder=\"Adresse\" type=\"text\" autocorrect=\"off\" autocomplete=\"address-line1\">\n\n            <div class=\"sad-lead-form-flex__container\">\n                <div class=\"sad-lead-form-flex__element sad-lead-form-width-382pc\">\n                    <input class=\"sad-lead-form-input sad--hidden sad-uppercase\" data-sad-lead-form-conditional-display-target=\"applicant.address\" name=\"applicant.address.zipcode\" placeholder=\"Code Postal\" type=\"text\" pattern=\"\\d*\" novalidate autocorrect=\"off\" autocomplete=\"postal-code\">\n                </div>\n\n                <div class=\"sad-lead-form-flex__element sad-lead-form-width-flex-grow-1\">\n                    <input class=\"sad-lead-form-input sad--hidden sad-uppercase\" data-sad-lead-form-conditional-display-target=\"applicant.address\" name=\"applicant.address.city\" placeholder=\"Ville\" type=\"text\" autocorrect=\"off\" autocomplete=\"address-level2\">\n                </div>\n            </div>\n\n             <div class=\"sad-lead-form-error\" id=\"js-sad-lead-form-field-zipcode-error-message\"></div>\n        </div>\n\n        <!-- ------------------\n         Provider\n        ------------------- -->\n        ".concat(this._providerSelectorTemplate, "\n\n        <!-- ------------------\n         Campaign\n        ------------------- -->\n        ").concat(this._campaignsSelectorTemplate, "\n    </div>\n\n    <div class=\"sad-lead-form__column sad-lead-form__column--full\">\n        <!-- ------------------\n         Informations compl\xE9mentaires : additionalInformation\n        ------------------- -->\n        <div class=\"sad-lead-form-control\">\n            <label class=\"sad-lead-form-label\" for=\"additionalInformation-line2\">Informations compl\xE9mentaires :</label>\n            <textarea class=\"sad-lead-form-input\" id=\"additionalInformation-line2\" rows=\"8\" cols=\"40\" data-sad-lead-form-field-name-additional-information-as-array></textarea>\n        </div>\n\n        <div class=\"sad-lead-form-control\">\n            <em><small><sup>*</sup> Mentions obligatoires</small></em>\n        </div>\n\n        <!-- ------------------\n         RGPD\n        ------------------- -->\n        <div class=\"sad-lead-form-control\" id=\"js-sad-lead-form-field-rgpd-container\">\n            <input class=\"sad-lead-form-control__input\" id=\"js-sad-lead-form-field-rgpd\" type=\"checkbox\">\n            <label class=\"sad-lead-form-control__label\" for=\"js-sad-lead-form-field-rgpd\">\n                <small>").concat(this._rgpdDescription, "</small>\n            </label>\n\n            <div class=\"sad-lead-form-error sad-pt-8\">\n                Autorisation obligatoire.\n            </div>\n        </div>\n    </div>\n\n    <div class=\"sad-lead-form__column sad-lead-form__column--half\">\n        <div class=\"sad-lead-form__submit-container\">\n            <!-- ------------------\n             Envoyer\n            ------------------- -->\n            <div class=\"sad-lead-form-text-center\" id=\"js-sad-lead-form-field-submit\">\n                <button type=\"submit\" class=\"sad-lead-form-button sad-lead-form__submit-button sad-lead-form-button--dark\" id=\"js-sad-lead-form-button-submit\">Envoyer</button>\n\n                <div class=\"sad-lead-form-error sad-pt-8\">\n                    Merci de compl\xE9ter les informations manquantes.\n                </div>\n            </div>\n        </div>\n    </div>\n</form>");
     }
   }]);
 
@@ -228,25 +198,33 @@ var SadLeadFormValidator = /*#__PURE__*/function () {
   }
 
   _createClass(SadLeadFormValidator, [{
-    key: "validateEmail",
-    value: function validateEmail(email) {
+    key: "isEmailValid",
+    value: function isEmailValid(email) {
       // eslint-disable-next-line no-useless-escape
       var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return emailRegex.test(String(email).toLowerCase());
     }
   }, {
-    key: "validateFrenchPhoneNumber",
-    value: function validateFrenchPhoneNumber(str) {
+    key: "isFrenchPhoneNumberValid",
+    value: function isFrenchPhoneNumberValid(str) {
       return str.match(/^((\+)33|0)[1-9](\d{2}){4}$/g);
     }
   }, {
-    key: "validateFrenchZipCode",
-    value: function validateFrenchZipCode(str) {
+    key: "isAddressValid",
+    value: function isAddressValid(address) {
+      var isEmptyL2L3L4 = address.l2 === '' && address.l3 === '' && address.l4 === '';
+      var isEmptyZipCode = address.zipcode === '';
+      var isEmptyCity = address.city === '';
+      return !(isEmptyL2L3L4 || isEmptyZipCode || isEmptyCity);
+    }
+  }, {
+    key: "isFrenchZipCodeValid",
+    value: function isFrenchZipCodeValid(str) {
       return str.match(/^(?:(?:(?:0[1-9]|[1-8]\d|9[0-5])(?:\d{3})?)|97[1-8]|98[4-9]|2[abAB])$/gm);
     }
   }, {
-    key: "validateStringWithoutSpecialCharacters",
-    value: function validateStringWithoutSpecialCharacters(str) {
+    key: "isStringValidLatinAlphabet",
+    value: function isStringValidLatinAlphabet(str) {
       return str.match(/^[a-zA-Z\u00C0-\u00FF- ]*$/gm);
     }
   }]);
@@ -655,7 +633,7 @@ var SadLeadFormModel = /*#__PURE__*/function () {
 
         this._elements.errors.lastName.innerText = 'Ce champ est obligatoire.';
         this._isValid = false;
-      } else if (!this._sadLeadFormValidator.validateStringWithoutSpecialCharacters(this._model.applicant.lastname)) {
+      } else if (!this._sadLeadFormValidator.isStringValidLatinAlphabet(this._model.applicant.lastname)) {
         this._elements.fields.lastName.classList.add('sad--invalid');
 
         this._elements.errors.lastName.innerText = 'Ce champ est obligatoire.';
@@ -671,7 +649,7 @@ var SadLeadFormModel = /*#__PURE__*/function () {
 
         this._elements.errors.firstName.innerText = 'Ce champ est obligatoire.';
         this._isValid = false;
-      } else if (!this._sadLeadFormValidator.validateStringWithoutSpecialCharacters(this._model.applicant.firstname)) {
+      } else if (!this._sadLeadFormValidator.isStringValidLatinAlphabet(this._model.applicant.firstname)) {
         this._elements.fields.firstName.classList.add('sad--invalid');
 
         this._elements.errors.firstName.innerText = 'Ce champ est obligatoire.';
@@ -718,7 +696,7 @@ var SadLeadFormModel = /*#__PURE__*/function () {
         this._elements.containers.emailField.classList.add('sad--invalid');
 
         this._isValid = false;
-      } else if (this._elements.toggle.email.checked && !this._sadLeadFormValidator.validateEmail(this._model.applicant.email)) {
+      } else if (this._elements.toggle.email.checked && !this._sadLeadFormValidator.isEmailValid(this._model.applicant.email)) {
         this._elements.containers.media.classList.add('sad--invalid');
 
         this._elements.containers.email.classList.add('sad--invalid');
@@ -732,21 +710,30 @@ var SadLeadFormModel = /*#__PURE__*/function () {
   }, {
     key: "_validateAddress",
     value: function _validateAddress() {
-      if (this._elements.toggle.address.checked && (this._model.applicant.address.l2 === '' && this._model.applicant.address.l3 === '' && this._model.applicant.address.l4 === '' || this._model.applicant.address.zipcode === '' || this._model.applicant.address.city === '')) {
-        this._elements.containers.media.classList.add('sad--invalid');
+      var _this3 = this;
 
-        this._elements.containers.address.classList.add('sad--invalid');
+      var isChecked = this._elements.toggle.address.checked;
 
-        this._elements.containers.addressField.classList.add('sad--invalid');
+      if (!isChecked) {
+        return;
+      }
 
+      var addInvalidClasses = function addInvalidClasses() {
+        _this3._elements.containers.media.classList.add('sad--invalid');
+
+        _this3._elements.containers.address.classList.add('sad--invalid');
+
+        _this3._elements.containers.addressField.classList.add('sad--invalid');
+      };
+
+      if (!this._sadLeadFormValidator.isAddressValid(this._model.applicant.address)) {
+        addInvalidClasses();
         this._isValid = false;
-      } else if (this._elements.toggle.address.checked && !this._sadLeadFormValidator.validateFrenchZipCode(this._model.applicant.address.zipcode)) {
-        this._elements.containers.media.classList.add('sad--invalid');
+        return;
+      }
 
-        this._elements.containers.address.classList.add('sad--invalid');
-
-        this._elements.containers.addressField.classList.add('sad--invalid');
-
+      if (!this._sadLeadFormValidator.isFrenchZipCodeValid(this._model.applicant.address.zipcode)) {
+        addInvalidClasses();
         this._elements.errors.zipCode.innerText = 'Ce code postal n’est pas un code postal français valide.';
         this._isValid = false;
       }
@@ -762,7 +749,7 @@ var SadLeadFormModel = /*#__PURE__*/function () {
         this._elements.containers.phoneField.classList.add('sad--invalid');
 
         this._isValid = false;
-      } else if (this._elements.toggle.phone.checked && !this._sadLeadFormValidator.validateFrenchPhoneNumber(this._model.applicant.phoneNumber)) {
+      } else if (this._elements.toggle.phone.checked && !this._sadLeadFormValidator.isFrenchPhoneNumberValid(this._model.applicant.phoneNumber)) {
         this._elements.containers.media.classList.add('sad--invalid');
 
         this._elements.containers.phone.classList.add('sad--invalid');
