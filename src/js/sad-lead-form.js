@@ -345,7 +345,8 @@ class SadLeadFormModel {
       this._isValid = false;
     } else if (
       this._elements.toggle.email.checked &&
-      !this._sadLeadFormValidator.isEmailValid(this._model.applicant.email)
+      (!this._sadLeadFormValidator.isEmailValid(this._model.applicant.email) ||
+        this._sadLeadFormValidator.isEmailBlackListed(this._model.applicant.email))
     ) {
       this._elements.containers.media.classList.add('sad--invalid');
       this._elements.containers.email.classList.add('sad--invalid');

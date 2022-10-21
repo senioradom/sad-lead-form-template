@@ -205,6 +205,11 @@ var SadLeadFormValidator = /*#__PURE__*/function () {
       return emailRegex.test(String(email).toLowerCase());
     }
   }, {
+    key: "isEmailBlackListed",
+    value: function isEmailBlackListed(email) {
+      return email.toLowerCase().endsWith('@gouv.fr');
+    }
+  }, {
     key: "isFrenchPhoneNumberValid",
     value: function isFrenchPhoneNumberValid(str) {
       return str.match(/^((\+)33|0)[1-9](\d{2}){4}$/g);
@@ -696,7 +701,7 @@ var SadLeadFormModel = /*#__PURE__*/function () {
         this._elements.containers.emailField.classList.add('sad--invalid');
 
         this._isValid = false;
-      } else if (this._elements.toggle.email.checked && !this._sadLeadFormValidator.isEmailValid(this._model.applicant.email)) {
+      } else if (this._elements.toggle.email.checked && (!this._sadLeadFormValidator.isEmailValid(this._model.applicant.email) || this._sadLeadFormValidator.isEmailBlackListed(this._model.applicant.email))) {
         this._elements.containers.media.classList.add('sad--invalid');
 
         this._elements.containers.email.classList.add('sad--invalid');

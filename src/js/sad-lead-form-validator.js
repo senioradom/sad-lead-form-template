@@ -5,6 +5,10 @@ class SadLeadFormValidator {
     return emailRegex.test(String(email).toLowerCase());
   }
 
+  isEmailBlackListed(email) {
+    return email.toLowerCase().endsWith('@gouv.fr');
+  }
+
   isFrenchPhoneNumberValid(str) {
     return str.match(/^((\+)33|0)[1-9](\d{2}){4}$/g);
   }
