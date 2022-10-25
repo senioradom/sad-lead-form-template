@@ -207,7 +207,7 @@ var SadLeadFormValidator = /*#__PURE__*/function () {
   }, {
     key: "isEmailBlackListed",
     value: function isEmailBlackListed(email) {
-      return email.toLowerCase().endsWith('@gouv.fr');
+      return email.toLowerCase().endsWith('.gouv.fr');
     }
   }, {
     key: "isFrenchPhoneNumberValid",

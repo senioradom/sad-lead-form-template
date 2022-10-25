@@ -6,7 +6,7 @@ class SadLeadFormValidator {
   }
 
   isEmailBlackListed(email) {
-    return email.toLowerCase().endsWith('@gouv.fr');
+    return email.toLowerCase().endsWith('.gouv.fr');
   }
 
   isFrenchPhoneNumberValid(str) {
