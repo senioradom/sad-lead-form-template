@@ -206,8 +206,15 @@ var SadLeadFormValidator = /*#__PURE__*/function () {
     }
   }, {
     key: "isEmailBlackListed",
-    value: function isEmailBlackListed(email) {
-      return email.toLowerCase().endsWith('.gouv.fr');
+    value: function isEmailBlackListed(emailInput) {
+      var email = emailInput.toLowerCase();
+      var blacklistedDomains = ['gouv.fr'];
+      var hasBlacklistedDomains = blacklistedDomains.map(function (blacklistedDomain) {
+        return email.endsWith(".".concat(blacklistedDomain)) || email.endsWith("@".concat(blacklistedDomain));
+      });
+      return hasBlacklistedDomains.some(function (hasBlacklistedDomain) {
+        return hasBlacklistedDomain === true;
+      });
     }
   }, {
     key: "isFrenchPhoneNumberValid",

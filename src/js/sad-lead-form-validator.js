@@ -5,8 +5,14 @@ class SadLeadFormValidator {
     return emailRegex.test(String(email).toLowerCase());
   }
 
-  isEmailBlackListed(email) {
-    return email.toLowerCase().endsWith('.gouv.fr');
+  isEmailBlackListed(emailInput) {
+    const email = emailInput.toLowerCase();
+    const blacklistedDomains = ['gouv.fr'];
+    const hasBlacklistedDomains = blacklistedDomains.map(
+      (blacklistedDomain) => email.endsWith(`.${blacklistedDomain}`) || email.endsWith(`@${blacklistedDomain}`)
+    );
+
+    return hasBlacklistedDomains.some((hasBlacklistedDomain) => hasBlacklistedDomain === true);
   }
 
   isFrenchPhoneNumberValid(str) {
