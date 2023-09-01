@@ -2,29 +2,19 @@
   "name": "sad-lead-form-template",
   "version": "1.1.7",
   "description": "sad-lead-form-template",
-  "main": "dist/index.html",
+  "type": "module",
   "files": [
     "dist"
   ],
   "scripts": {
-    "start": "parcel index.html --open",
-    "build": "parcel build index.html",
-    "lint": "eslint .",
-    "lint-fix": "eslint . --fix"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "@babel/core": "7.2.0",
-    "autoprefixer": "^9.7.5",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-config-prettier": "^6.10.1",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-prettier": "^3.1.2",
     "normalize.css": "^8.0.1",
-    "parcel-bundler": "^1.6.1",
-    "prettier": "^2.0.2",
-    "sass": "^1.26.3"
+    "sass": "^1.65.1",
+    "vite": "^4.4.5"
   },
   "dependencies": {},
   "repository": {
