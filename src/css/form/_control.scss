@@ -1,5 +1,8 @@
+@use 'sass:math';
+
 .#{ $form__prefix }control {
   $svg: '%23' + str_slice(inspect($form__svg), 2);
+  $form__control_size_half: math.div($form__control_size, 2);
 
   position: relative;
 
@@ -8,7 +11,7 @@
 
   &__input {
     position: absolute;
-    top: calc(50% - #{ $form__control_size/2 });
+    top: calc(50% - #{$form__control_size_half});
     left: 0;
 
     width: $form__control_size;
@@ -56,7 +59,7 @@
 
     &::after {
       position: absolute;
-      top: calc(50% - #{ $form__control_size/2 } - 1px);
+      top: calc(50% - #{$form__control_size_half} - 1px);
       left: 0;
 
       transition: transform $form__duration $form__timing;

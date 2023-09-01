@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 $button-function-factor: -20% !default;
 $button-background-color-lightness-threshold: 70% !default;
 $button-font-family: null !default;
@@ -5,7 +7,7 @@ $button-background-color: #e0e0e0 !default;
 $button-background-color-hover: auto !default;
 $button-border-radius: 3px !default;
 $button-font-size: 16px !default;
-$button-line-height: (24 / 16) !default;
+$button-line-height: math.div(24, 16) !default;
 $button-color: #fff !default;
 $button-color-alt: #333 !default;
 $button-padding: 10px 20px !default;

@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .#{ $form__prefix }select {
   $svg: '%23' + str_slice(inspect($form__svg), 2);
 
@@ -6,7 +8,7 @@
   //margin: 0 0 $form__margin;
   margin: .3rem 0 .3rem;
   padding: $form__padding;
-  padding-right: calc(#{ $form__padding + $form__padding/2 } + #{ $form__select_size });
+  padding-right: calc(#{ $form__padding + math.div($form--padding, 2) } + #{ $form__select_size });
 
   transition: border-color $form__duration $form__timing;
 
