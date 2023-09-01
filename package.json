@@ -1,6 +1,6 @@
 {
   "name": "sad-lead-form-template",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "sad-lead-form-template",
   "type": "module",
   "files": [
@@ -23,11 +23,12 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "normalize.css": "^8.0.1",
     "sass": "^1.65.1",
     "vite": "^4.4.5"
   },
-  "dependencies": {},
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/senioradom/sad-lead-form-template.git"
